@@ -1,0 +1,229 @@
+/*************
+    Mixins
+*************/
+
+@mixin cardArea {
+    position: absolute;
+    right: 0;
+    bottom: 6%;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 625px;
+    scroll-snap-type: y mandatory;
+    flex-basis: 50%;
+    margin-top: 10px;
+    margin-right: 2%;
+    overflow-y: scroll;
+}
+
+//GENERAL
+.character-logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transform: translate(-20%, 20%);
+    height: 80%;
+    filter: brightness(30%) opacity(0.2);
+}
+
+.screen {
+    display: block;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    z-index: 3;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-around;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    z-index: 3;
+
+    button {
+        width: 100px;
+        //background-image: linear-gradient(45deg, white, lightblue, white);
+        //border: 1px solid white;
+        cursor: pointer;
+        //transition: 0.3s;
+
+        //&:hover {
+            //background-image: linear-gradient(125deg, white, lightblue, white);
+        //}
+    }
+
+    .button-text {
+        height: 30px;
+        width: auto;
+    }
+}
+
+.ssr-cards {
+    @include cardArea();
+}
+
+.mr-cards {
+    @include cardArea();
+}
+
+.sr-cards {
+    @include cardArea();
+}
+
+.r-cards {
+    @include cardArea();
+}
+
+.card {
+    display: flex;
+    scroll-snap-align: start;
+    flex-direction: column;
+    width: 290px;
+    margin: 5px;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+}
+
+.r-bumper {
+    margin-bottom: 15px;
+}
+
+.card-img {
+    width: 100%;
+    height: auto;
+}
+
+//ARTEM'S PAGE
+.red-background {
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(217, 159, 158);
+    position: absolute;
+
+    #button {
+        position: relative;
+        margin-top: 110px;
+        margin-left: 30px;
+    }
+}
+
+#artem-main-img {
+    margin-left: -60px;
+    filter: opacity(50%);
+}
+
+.artem-card-title {
+    font-size: 20px;
+    background-color: rgb(206, 89, 87);
+    letter-spacing: 0.1em;
+    transform: translateY(10px);
+}
+
+.artem-call-line {
+    background-color: rgb(206, 89, 87);
+    transform: translateY(-28px);
+}
+
+//LUKE'S PAGE
+.yellow-background {
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    color: black;
+    background-color: rgb(253, 233, 180);
+    position: absolute;
+
+    #button {
+        position: relative;
+        margin-top: 110px;
+        margin-left: 30px;
+    }
+}
+
+.luke-card-title {
+    font-size: 20px;
+    background-color: rgb(243, 202, 89);
+    letter-spacing: 0.1em;
+    transform: translateY(10px);
+}
+
+.luke-call-line {
+    background-color: rgb(243, 202, 89);
+    transform: translateY(-28px);
+}
+
+#luke-main-img {
+    margin-left: -168px;
+}
+
+//MARIUS' PAGE
+.purple-background {
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    color: black;
+    background-color: rgb(181, 176, 208);
+    position: absolute;
+
+    #button {
+        position: relative;
+        margin-top: 110px;
+        margin-left: 30px;
+    }
+}
+
+#marius-main-img {
+    margin-left: -150px;
+}
+
+.marius-card-title {
+    font-size: 20px;
+    background-color: rgb(113, 99, 192);
+    letter-spacing: 0.1em;
+    transform: translateY(10px);
+}
+
+.marius-call-line {
+    background-color: rgb(113, 99, 192);
+    transform: translateY(-28px);
+}
+
+//VYN'S PAGE
+.green-background {
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    color: black;
+    background-color: rgb(180, 202, 189);
+    position: absolute;
+
+    #button {
+        position: relative;
+        margin-top: 110px;
+        margin-left: 30px;
+    }
+}
+
+#vyn-main-img {
+    margin-left: -70px;
+}
+
+.vyn-card-title {
+    font-size: 20px;
+    background-color: rgb(89, 168, 122);
+    letter-spacing: 0.1em;
+    transform: translateY(10px);
+}
+
+.vyn-call-line {
+    background-color: rgb(89, 168, 122);
+    transform: translateY(-28px);
+}

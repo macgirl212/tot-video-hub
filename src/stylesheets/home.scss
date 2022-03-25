@@ -1,0 +1,294 @@
+/*************
+  Variables
+*************/
+$transition-in: 250ms;
+$transition-out: 200ms;
+
+/*************
+    Mixins
+*************/
+
+@mixin nameTitle {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform-origin: 100% 100%;
+    transform: rotate(-90deg) translateX(100%) translateY(100%);
+    padding: 20px;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    transition-duration: 1s;
+    transition: visibility 0s $transition-in, opacity $transition-in linear;
+}
+
+@mixin smallNameTitle {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: rotate(0deg) translateX(0%) translateY(100%);
+    padding: 20px;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    transition-duration: 1s;
+    transition: visibility 0s $transition-in, opacity $transition-in linear;
+    width: 100%;
+    height: 50%;
+}
+
+@mixin nameTitleAnimation {
+    transform: rotate(-90deg) translateX(100%) translateY(0%);
+    transition: all $transition-in ease-in-out;
+}
+
+@mixin smallNameTitleAnimation {
+    transform: rotate(0deg) translateX(0%) translateY(0%);
+    transition: all $transition-in ease-in-out;
+}
+
+@mixin fadedCharacterSection {
+    filter: grayscale(70%) opacity(0.7);
+    transition: all $transition-in ease-in;
+}
+
+@mixin fullColorCharacterSection {
+    filter: grayscale(0%) opacity(1);
+    transition-duration: $transition-in;
+}
+
+@mixin imageZoomIn {
+    height: 85%;
+    margin-bottom: -7%;
+    transition-duration: $transition-in;
+}
+
+//MAIN SECTIONS
+.sections {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.individual-section {
+    border: 3px solid black;
+    width: 25%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.section-img {
+    position: absolute;
+    bottom: 0;
+    height: 80%;
+}
+
+//ARTEM
+#artem-name {
+    @include nameTitle;
+    background-color: rgb(206, 89, 87);
+
+}
+
+#artem-bg {
+    @include fadedCharacterSection;
+    background-color: rgb(217, 159, 158);
+    
+
+    #artem-name {
+        transition: all $transition-out ease-in-out;
+    }
+
+    #artem-section-img {
+        transition: all $transition-out ease-in;
+    }
+
+    &:hover #artem-section-img {
+        @include imageZoomIn;
+    }
+
+    &:hover #artem-name {
+        @include nameTitleAnimation;
+    }
+
+    &:hover {
+        @include fullColorCharacterSection;
+    }
+}
+
+#artem-section-img {
+    margin-left: -60px;
+}
+
+#luke-name {
+    @include nameTitle;
+    background-color: rgb(243, 202, 89);
+}
+
+//LUKE
+#luke-bg {
+    @include fadedCharacterSection;
+    background-color: rgb(253, 233, 180);
+
+    #luke-name {
+        transition: all $transition-out ease-in-out;
+    }
+
+    #luke-section-img {
+        transition: all $transition-out ease-in;
+    }
+
+    &:hover #luke-section-img {
+        @include imageZoomIn;
+    }
+
+    &:hover #luke-name {
+        @include nameTitleAnimation;
+    }
+
+    &:hover {
+        @include fullColorCharacterSection;
+    }
+}
+
+#luke-section-img {
+    margin-left: -110px;
+}
+
+//MARIUS
+#marius-name {
+    @include nameTitle;
+    background-color: rgb(113, 99, 192);
+}
+
+#marius-bg {
+    @include fadedCharacterSection;
+    background-color: rgb(181, 176, 208);
+
+    #marius-name {
+        transition: all $transition-out ease-in-out;
+    }
+
+    #marius-section-img {
+        transition: all $transition-out ease-in;
+    }
+
+    &:hover #marius-section-img {
+        @include imageZoomIn;
+    }
+
+    &:hover #marius-name {
+        @include nameTitleAnimation;
+    }
+
+    &:hover {
+        @include fullColorCharacterSection;
+    }
+}
+
+#marius-section-img {
+    margin-left: -140px;
+}
+
+//VYN
+#vyn-name {
+    @include nameTitle;
+    background-color: rgb(89, 168, 122);
+}
+
+#vyn-bg {
+    @include fadedCharacterSection;
+    background-color: rgb(180, 202, 189);
+
+    #vyn-name {
+        transition: all $transition-out ease-in-out;
+    }
+
+    #vyn-section-img {
+        transition: all $transition-out ease-in;
+    }
+
+    &:hover #vyn-section-img {
+        @include imageZoomIn;
+    }
+
+    &:hover #vyn-name {
+        @include nameTitleAnimation;
+    }
+
+    &:hover {
+        @include fullColorCharacterSection;
+    }
+}
+
+#vyn-section-img {
+    margin-left: -60px;
+}
+
+
+@media (max-width: 1000px) {
+    .section-img {
+        transform: translateX(-50px);
+    }
+}
+
+@media (max-width: 780px) {
+    .section-img {
+        transform: translateX(-80px);
+    }
+}
+
+@media (max-width: 675px) {
+    .sections {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .individual-section {
+        border: 3px solid black;
+        width: 100%;
+        height: 25vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .section-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 1400px;
+        transform: translate(-250px, 1100px);
+    }
+
+    #artem-name {
+        @include smallNameTitle;
+        background-color: rgb(206, 89, 87);
+    }
+
+    #artem-bg {
+        @include fadedCharacterSection;
+        background-color: rgb(217, 159, 158);
+        
+        #artem-name {
+            transition: all $transition-out ease-in-out;
+        }
+    
+        #artem-section-img {
+            transition: all $transition-out ease-in;
+        }
+    
+        &:hover #artem-section-img {
+            @include imageZoomIn;
+        }
+    
+        &:hover #artem-name {
+            @include smallNameTitleAnimation;
+        }
+    
+        &:hover {
+            @include fullColorCharacterSection;
+        }
+    }
+}
