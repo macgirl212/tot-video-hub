@@ -6,8 +6,11 @@ import gentlemanlyCourtesy from '../images/600px-Vyn__Gentlemanly_Courtesy__Base
 import leisureTime from '../images/600px-Vyn__Leisure_Time__Base.png'
 import observations from '../images/600px-Vyn__Observations__Base.png'
 import remainingInControl from '../images/600px-Vyn__Remaining_in_Control__Base.png'
+import secretGift from '../images/Vyn_"Secret_Gift"_Base.png'
 import unexpectedLetter from '../images/600px-Vyn__Unexpected_Letter__Base.png'
 import unexpectedRunIn from '../images/600px-Vyn__Unexpected_Run-In__Base.png'
+import wholeNewExperience from '../images/Vyn_"Whole_New_Experience"_Base.png'
+import wish from '../images/Vyn_"Wish"_Base.png'
 
 const vynRCards = [
     {
@@ -52,13 +55,28 @@ const vynRCards = [
     },
     {
         key: 9,
+        title: 'Secret Gift',
+        basePicture: secretGift
+    },
+    {
+        key: 10,
         title: 'Unexpected Letter',
         basePicture: unexpectedLetter
     },
     {
-        key: 10,
+        key: 11,
         title: 'Unexpected Run-In',
         basePicture: unexpectedRunIn
+    },
+    {
+        key: 12,
+        title: 'Whole New Experience',
+        basePicture: wholeNewExperience
+    },
+    {
+        key: 13,
+        title: 'Wish',
+        basePicture: wish
     }
 ]
 
