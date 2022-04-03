@@ -1,9 +1,10 @@
 //426x900 images
-// or temp 388x819 images
 import stretching from '../images/Artem_"Stretching".png'
 
 //1080x1920 videos
-
+// temp gallery videos from youtube
+import stretchingVid1 from '../images/Artem_"Stretching"_Base.mp4'
+import stretchingVid2 from '../images/Artem_"Stretching"_Evolve_1.mp4'
 
 import { useEffect, useState } from 'react';
 import FullScreenView from '../FullScreenView'
@@ -13,8 +14,8 @@ const artemMrCards = [
         key: 1,
         title: 'Stretching',
         basePicture: stretching,
-        baseVid: '',
-        evolVid1: '',
+        baseVid: stretchingVid1,
+        evolVid1: stretchingVid2,
         videoSrc: 'https://www.youtube.com/embed/U3Q0ZP_MVUk'
     }
 ]
