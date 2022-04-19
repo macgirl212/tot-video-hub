@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "stock": "node populate.js", 
+    "stock": "node populate.js",
+    "convert": "node convertImage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Melody Davis",

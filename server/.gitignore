@@ -2,4 +2,5 @@
 /package-lock.json
 .env
 cards.json
+convertImage.js
 populate.js
