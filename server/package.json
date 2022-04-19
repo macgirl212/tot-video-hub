@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "stock": "node populate.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Melody Davis",
@@ -14,7 +15,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "mongoose": "^6.3.0"
+    "mongoose": "^6.3.0",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

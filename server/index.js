@@ -5,6 +5,8 @@ const cors = require('cors')
 const express = require('express')
 const connectDB = require('./db/connect')
 
+const cardRouter = require('./routes/cards')
+
 const app = express()
 
 app.use(cors())
@@ -14,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/', (req, res) => {
     res.send('Hello world!')
 })
+
+app.use('/api/v1/', cardRouter)
 
 const port = process.env.PORT || 3001
 

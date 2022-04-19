@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const CardSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true,
         unique: true
@@ -13,10 +13,7 @@ const CardSchema = new mongoose.Schema({
     basePicture: {
         type: String
     },
-    evolPicture1: {
-        type: String
-    },
-    evolPicture2: {
+    evolPicture: {
         type: String
     },
     baseVid: {
