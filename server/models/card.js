@@ -7,8 +7,7 @@ const CardSchema = new mongoose.Schema({
         unique: true
     },
     previewPicture: {
-        type: String,
-        default: ""
+        type: String
     },
     basePicture: {
         type: String
@@ -32,7 +31,8 @@ const CardSchema = new mongoose.Schema({
     },
     character: {
         type: String,
-        enum: ["Artem", "Luke", "Marius", "Vyn"]
+        enum: ["Artem", "Luke", "Marius", "Vyn"],
+        required: true
     }
 })
 

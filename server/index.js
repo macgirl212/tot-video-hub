@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/', cardRouter)
-app.use('/upload', uploadRouter)
+app.use('/api/v1/media', uploadRouter)
 
 const port = process.env.PORT || 3001
 
