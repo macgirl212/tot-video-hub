@@ -6,6 +6,7 @@ const express = require('express')
 const connectDB = require('./db/connect')
 
 const cardRouter = require('./routes/cards')
+const uploadRouter = require('./convertImage')
 
 const app = express()
 
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/', cardRouter)
+app.use('/upload', uploadRouter)
 
 const port = process.env.PORT || 3001
 
