@@ -9,8 +9,16 @@ import MariusPage from './marius-pages/MariusPage.js'
 import VynIcon from './vyn-pages/VynIcon.js'
 import VynPage from './vyn-pages/VynPage.js'
 import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 
 function Home({ setHeader }) {
+
+    // test connection with backend
+    axios.get('http://localhost:3001/')
+        .then(res => {
+            console.log(res.data)
+        })
+
     const [showArtem, setShowArtem] = useState(false)
     const [showLuke, setShowLuke] = useState(false)
     const [showMarius, setShowMarius] = useState(false)
