@@ -26,12 +26,12 @@ const CardSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ["R", "MR", "SR", "SSR"],
+        enum: ["r", "mr", "sr", "ssr"],
         required: true
     },
     character: {
         type: String,
-        enum: ["Artem", "Luke", "Marius", "Vyn"],
+        enum: ["artem", "luke", "marius", "vyn"],
         required: true
     }
 })
