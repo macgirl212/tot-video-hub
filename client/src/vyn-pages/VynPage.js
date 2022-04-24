@@ -7,7 +7,8 @@ import Navbar from '../Navbar'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-function VynPage({ setHeader }) {
+function VynPage() {
+    const [header, setHeader] = useState('Vyn Richter')
     const [selectR, setSelectR] = useState(false)
     const [selectSr, setSelectSr] = useState(false)
     const [selectMr, setSelectMr] = useState(false)
@@ -51,8 +52,7 @@ function VynPage({ setHeader }) {
 
     return (
         <>
-            {/*blank navbar to fix*/}
-            <Navbar />
+            <Navbar header={header} />
             <div className="green-background">
                 <Link to="/">
                     <button id="button">Back</button>

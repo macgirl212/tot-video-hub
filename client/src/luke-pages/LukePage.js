@@ -6,7 +6,8 @@ import Navbar from '../Navbar'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
-function LukePage({ setHeader }) {
+function LukePage() {
+    const [header, setHeader] = useState('Luke Pearce')
     const [selectR, setSelectR] = useState(false)
     const [selectSr, setSelectSr] = useState(false)
     const [selectSsr, setSelectSsr] = useState(false)
@@ -39,7 +40,7 @@ function LukePage({ setHeader }) {
     return (
         <>
         {/*blank navbar to fix*/}
-        <Navbar />
+        <Navbar header={header} />
             <div className="yellow-background">
                 <Link to="/">
                     <button id="button">Back</button>

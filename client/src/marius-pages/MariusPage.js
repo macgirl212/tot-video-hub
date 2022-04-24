@@ -6,7 +6,8 @@ import Navbar from '../Navbar'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-function MariusPage({ setHeader }) {
+function MariusPage() {
+    const [header, setHeader] = useState('Marius von Hagen')
     const [selectR, setSelectR] = useState(false)
     const [selectSr, setSelectSr] = useState(false)
     const [selectSsr, setSelectSsr] = useState(false)
@@ -38,8 +39,7 @@ function MariusPage({ setHeader }) {
 
     return (
         <>
-            {/*blank navbar to fix*/}
-            <Navbar />
+            <Navbar header={header} />
             <div className="purple-background">
                 <Link to="/">
                     <button id="button">Back</button>
