@@ -3,9 +3,11 @@ import VynR from './VynR.js'
 import VynSr from './VynSr.js'
 import VynMr from './VynMr.js'
 import VynSsr from './VynSsr.js'
+import Navbar from '../Navbar'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-function VynPage({ onClick, setHeader }) {
+function VynPage({ setHeader }) {
     const [selectR, setSelectR] = useState(false)
     const [selectSr, setSelectSr] = useState(false)
     const [selectMr, setSelectMr] = useState(false)
@@ -48,21 +50,27 @@ function VynPage({ onClick, setHeader }) {
     useEffect(() => {}, [findSsr])
 
     return (
-        <div className="green-background">
-            <button id="button" onClick={onClick}>Back</button>
-            <img src={vynLogo} alt="Vyn Richter" className="character-logo"></img>
-            <iframe className="screen" width="640" height="360" src={`${videoSrc}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-            <div className="button-row">
-                <button className="card-button" onClick={() => findSsr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/c/c9/SSR_icon.png/92px-SSR_icon.png"></img></button>
-                <button className="card-button" onClick={() => findMr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/8/82/MR_icon.png/78px-MR_icon.png"></img></button>
-                <button className="card-button" onClick={() => findSr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/f/f7/SR_icon.png/76px-SR_icon.png"></img></button>
-                <button className="card-button" onClick={() => findR()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/b/bf/R_icon.png/43px-R_icon.png"></img></button>
+        <>
+            {/*blank navbar to fix*/}
+            <Navbar />
+            <div className="green-background">
+                <Link to="/">
+                    <button id="button">Back</button>
+                </Link>
+                <img src={vynLogo} alt="Vyn Richter" className="character-logo"></img>
+                <iframe className="screen" width="640" height="360" src={`${videoSrc}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <div className="button-row">
+                    <button className="card-button" onClick={() => findSsr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/c/c9/SSR_icon.png/92px-SSR_icon.png"></img></button>
+                    <button className="card-button" onClick={() => findMr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/8/82/MR_icon.png/78px-MR_icon.png"></img></button>
+                    <button className="card-button" onClick={() => findSr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/f/f7/SR_icon.png/76px-SR_icon.png"></img></button>
+                    <button className="card-button" onClick={() => findR()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/b/bf/R_icon.png/43px-R_icon.png"></img></button>
+                </div>
+                { selectR ? <VynR /> : null }
+                { selectSr ? <VynSr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null }
+                { selectMr ? <VynMr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null }
+                { selectSsr ? <VynSsr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null}
             </div>
-            { selectR ? <VynR /> : null }
-            { selectSr ? <VynSr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null }
-            { selectMr ? <VynMr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null }
-            { selectSsr ? <VynSsr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null}
-        </div>
+        </>
     )
 }
 

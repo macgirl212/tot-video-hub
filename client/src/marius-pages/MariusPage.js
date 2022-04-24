@@ -2,9 +2,11 @@ import mariusLogo from '../images/Marius-Logo.png'
 import MariusR from './MariusR.js'
 import MariusSr from './MariusSr.js'
 import MariusSsr from './MariusSsr.js'
+import Navbar from '../Navbar'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-function MariusPage({ onClick, setHeader }) {
+function MariusPage({ setHeader }) {
     const [selectR, setSelectR] = useState(false)
     const [selectSr, setSelectSr] = useState(false)
     const [selectSsr, setSelectSsr] = useState(false)
@@ -35,19 +37,25 @@ function MariusPage({ onClick, setHeader }) {
     useEffect(() => {}, [findSsr])
 
     return (
-        <div className="purple-background">
-            <button id="button" onClick={onClick}>Back</button>
-            <img src={mariusLogo} alt="Marius von Hagen" className="character-logo"></img>
-            <iframe className="screen" width="640" height="360" src={`${videoSrc}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-            <div className="button-row">
-                <button className="card-button" onClick={() => findSsr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/c/c9/SSR_icon.png/92px-SSR_icon.png"></img></button>
-                <button className="card-button" onClick={() => findSr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/f/f7/SR_icon.png/76px-SR_icon.png"></img></button>
-                <button className="card-button" onClick={() => findR()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/b/bf/R_icon.png/43px-R_icon.png"></img></button>
+        <>
+            {/*blank navbar to fix*/}
+            <Navbar />
+            <div className="purple-background">
+                <Link to="/">
+                    <button id="button">Back</button>
+                </Link>
+                <img src={mariusLogo} alt="Marius von Hagen" className="character-logo"></img>
+                <iframe className="screen" width="640" height="360" src={`${videoSrc}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <div className="button-row">
+                    <button className="card-button" onClick={() => findSsr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/c/c9/SSR_icon.png/92px-SSR_icon.png"></img></button>
+                    <button className="card-button" onClick={() => findSr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/f/f7/SR_icon.png/76px-SR_icon.png"></img></button>
+                    <button className="card-button" onClick={() => findR()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/b/bf/R_icon.png/43px-R_icon.png"></img></button>
+                </div>
+                { selectR ? <MariusR /> : null }
+                { selectSr ? <MariusSr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null }
+                { selectSsr ? <MariusSsr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null}
             </div>
-            { selectR ? <MariusR /> : null }
-            { selectSr ? <MariusSr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null }
-            { selectSsr ? <MariusSsr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null}
-        </div>
+        </>
     )
 }
 
