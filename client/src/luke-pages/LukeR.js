@@ -11,6 +11,8 @@ import together from '../images/Luke_"Together"_Base.png'
 import waitingForYou from '../images/600px-Luke_"Waiting_for_You"_Base.png'
 import warmHome from '../images/Luke_"Warm_Home"_Base.png'
 import warmUp from '../images/600px-Luke_"Warm_Up"_Base.png'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const lukeRCards = [
     {
@@ -81,6 +83,44 @@ const lukeRCards = [
 ]
 
 function LukeR() {
+    const [cards, setCards] = useState([])
+    const [pictures, setPictures] = useState([])
+    
+    async function getRCards() {
+        // get card json from backend
+        await axios.get('http://localhost:3001/api/v1/luke?type=r', {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => {
+            // store json data in cards state
+            setCards(data.data)}
+        )
+    }
+
+    async function getImages(fileName) {
+        // get images from backend
+        await axios.get(`localhost:3001/api/v1/media/${fileName}`, {
+            headers: {
+                'Content-Type': 'image/png'
+            }
+        })
+        .then(data => {
+            // we'll do something with the data here
+            console.log(data)
+        })
+    }
+
+    useEffect(() => {
+        getRCards()
+    }, [])
+
+    if (cards) {
+        // if r cards button is active, let's try to get the picture data too
+        console.log(cards)
+    }
+
     return (
         <div className="r-cards">
             {lukeRCards.map((card) => {
