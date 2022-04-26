@@ -6,7 +6,7 @@ const getMariusCards = async (req, res) => {
     if (type) {
         queryObject.type = type
     }
-    const cards = await Card.find(queryObject)
+    const cards = await Card.find(queryObject).sort({ "title": 1 })
     res.status(200).json(cards)
 }
 
