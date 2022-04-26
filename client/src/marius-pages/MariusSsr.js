@@ -34,7 +34,7 @@ import willOfTheTreesVid1 from '../images/Marius_"Will_of_the_Trees"_Base.mp4'
 import willOfTheTreesVid2 from '../images/Marius_"Will_of_the_Trees"_Evolve_1.mp4'
 import willOfTheTreesVid3 from '../images/Marius_"Will_of_the_Trees"_Evolve_2.mp4'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import FullScreenView from '../FullScreenView'
 
 const mariusSsrCards = [
@@ -138,8 +138,6 @@ function MariusSsr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc2)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>

@@ -38,7 +38,7 @@ import spillingLightVid1 from '../images/Vyn_"Spilling_Light"_Base.mp4'
 import spillingLightVid2 from '../images/Vyn_"Spilling_Light"_Evolve_1.mp4'
 import spillingLightVid3 from '../images/Vyn_"Spilling_Light"_Evolve_2.mp4'
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FullScreenView from '../FullScreenView'
 
 const vynSrCards = [
@@ -138,8 +138,6 @@ function VynSr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>

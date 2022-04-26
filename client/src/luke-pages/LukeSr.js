@@ -38,7 +38,7 @@ import togetherWithYouVid1 from '../images/Luke_"Together_with_You"_Base.mp4'
 import togetherWithYouVid2 from '../images/Luke_"Together_with_You"_Evolve_1.mp4'
 import togetherWithYouVid3 from '../images/Luke_"Together_with_You"_Evolve_2.mp4'
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import FullScreenView from '../FullScreenView'
 
 const lukeSrCards = [
@@ -138,8 +138,6 @@ function LukeSr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>

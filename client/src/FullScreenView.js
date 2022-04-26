@@ -1,6 +1,6 @@
 import './stylesheets/fullScreenView.css'
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function FullScreenView({ onClick, source1, source2, source3, className }) {
     let videoArray = []
@@ -38,9 +38,6 @@ function FullScreenView({ onClick, source1, source2, source3, className }) {
         }
         setVideoLoopSrc(videoLoopSrc = videoArray[videoLoop])
     }
-
-    useEffect(() => {}, [prevButton])
-    useEffect(() => {}, [nextButton])
 
     return (
         <div id="fs-overlay">

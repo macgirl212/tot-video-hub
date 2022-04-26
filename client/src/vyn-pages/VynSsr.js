@@ -26,7 +26,7 @@ import nearAndFarVid1 from '../images/Vyn_"Near_and_Far"_Base.mp4'
 import nearAndFarVid2 from '../images/Vyn_"Near_and_Far"_Evolve_1.mp4'
 import nearAndFarVid3 from '../images/Vyn_"Near_and_Far"_Evolve_2.mp4'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import FullScreenView from '../FullScreenView'
 
 const vynSsrCards = [
@@ -110,8 +110,6 @@ function VynSsr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc2)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>

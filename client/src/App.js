@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './HomePage'
 import ArtemPage from './artem-pages/ArtemPage'

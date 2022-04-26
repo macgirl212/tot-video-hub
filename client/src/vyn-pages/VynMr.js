@@ -5,7 +5,7 @@ import morningGlory from '../images/Vyn_"Morning_Glory".png'
 import morningGloryVid1 from '../images/Vyn_"Morning_Glory"_Base.mp4'
 import morningGloryVid2 from '../images/Vyn_"Morning_Glory"_Evolve_1.mp4'
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FullScreenView from '../FullScreenView'
 
 const vynMrCards = [
@@ -33,7 +33,6 @@ function VynMr({ setVideoSrc, setHeader }) {
         setHeader(card.title)
     }
 
-    useEffect(() => {}, [fullScreen])
     return (
         <div>
             { showFullScreen ? 

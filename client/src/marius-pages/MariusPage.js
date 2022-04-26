@@ -3,7 +3,7 @@ import MariusR from './MariusR.js'
 import MariusSr from './MariusSr.js'
 import MariusSsr from './MariusSsr.js'
 import Navbar from '../Navbar'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function MariusPage() {
@@ -33,10 +33,6 @@ function MariusPage() {
         setSelectSr(false)
     }
 
-    useEffect(() => {}, [findR])
-    useEffect(() => {}, [findSr])
-    useEffect(() => {}, [findSsr])
-
     return (
         <>
             <Navbar header={header} />
@@ -47,9 +43,9 @@ function MariusPage() {
                 <img src={mariusLogo} alt="Marius von Hagen" className="character-logo"></img>
                 <iframe className="screen" width="640" height="360" src={`${videoSrc}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 <div className="button-row">
-                    <button className="card-button" onClick={() => findSsr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/c/c9/SSR_icon.png/92px-SSR_icon.png"></img></button>
-                    <button className="card-button" onClick={() => findSr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/f/f7/SR_icon.png/76px-SR_icon.png"></img></button>
-                    <button className="card-button" onClick={() => findR()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/b/bf/R_icon.png/43px-R_icon.png"></img></button>
+                    <button className="card-button" onClick={() => findSsr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/c/c9/SSR_icon.png/92px-SSR_icon.png" alt="SSR" /></button>
+                    <button className="card-button" onClick={() => findSr()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/f/f7/SR_icon.png/76px-SR_icon.png" alt="SR" /></button>
+                    <button className="card-button" onClick={() => findR()}><img className="button-text" src="https://static.miraheze.org/tearsofthemiswiki/thumb/b/bf/R_icon.png/43px-R_icon.png" alt="R" /></button>
                 </div>
                 { selectR ? <MariusR /> : null }
                 { selectSr ? <MariusSr setVideoSrc={setVideoSrc} setHeader={setHeader} /> : null }

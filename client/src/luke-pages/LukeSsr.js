@@ -30,7 +30,7 @@ import warmEmbraceVid1 from '../images/Luke_"Warm_Embrace"_Base.mp4'
 import warmEmbraceVid2 from '../images/Luke_"Warm_Embrace"_Evolve_1.mp4'
 import warmEmbraceVid3 from '../images/Luke_"Warm_Embrace"_Evolve_2.mp4'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import FullScreenView from '../FullScreenView'
 
 const lukeSsrCards = [
@@ -124,8 +124,6 @@ function LukeSsr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc2)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>

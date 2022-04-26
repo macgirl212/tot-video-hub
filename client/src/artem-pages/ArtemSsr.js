@@ -26,7 +26,7 @@ import wanderingHeartVid1 from '../images/Artem_"Wandering_Heart"_Base.mp4'
 import wanderingHeartVid2 from '../images/Artem_"Wandering_Heart"_Evolve_1.mp4'
 import wanderingHeartVid3 from '../images/Artem_"Wandering_Heart"_Evolve_2.mp4'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import FullScreenView from '../FullScreenView'
 
 const artemSsrCards = [
@@ -110,8 +110,6 @@ function ArtemSsr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc2)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>

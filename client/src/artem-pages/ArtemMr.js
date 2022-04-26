@@ -6,7 +6,7 @@ import stretching from '../images/Artem_"Stretching".png'
 import stretchingVid1 from '../images/Artem_"Stretching"_Base.mp4'
 import stretchingVid2 from '../images/Artem_"Stretching"_Evolve_1.mp4'
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FullScreenView from '../FullScreenView'
 
 const artemMrCards = [
@@ -34,7 +34,6 @@ function ArtemMr({ setVideoSrc, setHeader }) {
         setHeader(card.title)
     }
 
-    useEffect(() => {}, [fullScreen])
     return (
         <div>
             { showFullScreen ? 

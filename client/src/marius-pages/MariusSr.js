@@ -30,7 +30,7 @@ import twilightBeautyVid1 from '../images/Marius_"Twilight_Beauty"_Base.mp4'
 import twilightBeautyVid2 from '../images/Marius_"Twilight_Beauty"_Evolve_1.mp4'
 import twilightBeautyVid3 from '../images/Marius_"Twilight_Beauty"_Evolve_2.mp4'
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FullScreenView from '../FullScreenView'
 
 const mariusSrCards = [
@@ -113,8 +113,6 @@ function MariusSr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>

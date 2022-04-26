@@ -34,7 +34,7 @@ import thinVeilVid1 from '../images/Artem_"Thin_Veil"_Base.mp4'
 import thinVeilVid2 from '../images/Artem_"Thin_Veil"_Evolve_1.mp4'
 import thinVeilVid3 from '../images/Artem_"Thin_Veil"_Evolve_2.mp4'
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FullScreenView from '../FullScreenView'
 
 const artemSrCards = [
@@ -66,7 +66,7 @@ const artemSrCards = [
         baseVid: fixatedOnYouVid1,
         evolVid1: fixatedOnYouVid2,
         evolVid2: fixatedOnYouVid3,
-        videoSrc: 'https://www.youtube.com/embed/PNSSyFut4cc'
+        videoSrc: 'https://www.youtube.com/embed/PNSSyFut4cc' // dead link
     },
     {
         key: 4,
@@ -133,8 +133,6 @@ function ArtemSr({ setVideoSrc, setHeader }) {
         setVideoSrc(card.videoSrc)
         setHeader(card.title)
     }
-
-    useEffect(() => {}, [fullScreen])
 
     return (
         <div>
