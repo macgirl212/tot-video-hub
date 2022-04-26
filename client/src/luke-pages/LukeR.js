@@ -84,7 +84,8 @@ const lukeRCards = [
 
 function LukeR() {
     const [cards, setCards] = useState([])
-    const [pictures, setPictures] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [images, setImages] = useState()
     
     async function getRCards() {
         // get card json from backend
@@ -95,31 +96,34 @@ function LukeR() {
         })
         .then(data => {
             // store json data in cards state
-            setCards(data.data)}
+            setCards(data.data)
+            setLoading(true)
+            }
         )
     }
 
-    async function getImages(fileName) {
+    // try to call next axios get request here for images
+    const getImages = async (fileName) => {
         // get images from backend
-        await axios.get(`localhost:3001/api/v1/media/${fileName}`, {
-            headers: {
-                'Content-Type': 'image/png'
-            }
-        })
-        .then(data => {
-            // we'll do something with the data here
-            console.log(data)
-        })
-    }
+        const response = `http://localhost:3001/api/v1/media/${fileName}`
+        return response
+    }   
 
     useEffect(() => {
         getRCards()
     }, [])
 
-    if (cards) {
-        // if r cards button is active, let's try to get the picture data too
-        console.log(cards)
-    }
+    useEffect(() => {
+        // while loading, let's try to get the picture data too
+        if (loading) {
+            console.log(cards[0].basePicture)
+            const image = getImages(cards[0].basePicture)
+            image.then((data) => {
+                setImages(data)
+            })
+           setLoading(false)
+        }
+    }, [loading])
 
     return (
         <div className="r-cards">
@@ -129,6 +133,7 @@ function LukeR() {
                     <img className="card-img" src={`${card.basePicture}`} alt=''></img>
                 </div>)
             })}
+            { /* images ? <img src={images} /> : null */ }
         </div>
     )
 }
