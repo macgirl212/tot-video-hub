@@ -24,6 +24,9 @@ const CardSchema = new mongoose.Schema({
     evolVid2: {
         type: String
     },
+    youTubeSrc: {
+        type: String
+    },
     type: {
         type: String,
         enum: ["r", "mr", "sr", "ssr"],

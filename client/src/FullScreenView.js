@@ -2,21 +2,21 @@ import './stylesheets/fullScreenView.css'
 
 import React, { useState } from 'react';
 
-function FullScreenView({ onClick, source1, source2, source3, className }) {
-    let videoArray = []
-    if (source3 !== undefined) {
-        videoArray.push(source1, source2, source3)
-    } else {
-        videoArray.push(source1, source2)
+function FullScreenView({ card, className, setShowFullScreen }) {
+    const { baseVid, evolVid1, evolVid2 } = card.data
+    let videoArray = [baseVid, evolVid1]
+
+    if (evolVid2 !== "") {
+        videoArray.push(evolVid2)
     }
 
     let [videoLoop, setVideoLoop] = useState(0)
-    let [videoLoopSrc, setVideoLoopSrc] = useState(source1)
+    let [videoLoopSrc, setVideoLoopSrc] = useState(baseVid)
 
     const CardVideo = () => {
         return (
             <video className="full-card-video" autoPlay muted loop>
-                <source src={videoLoopSrc}></source>
+                <source src={`http://localhost:3001/api/v1/media/${videoLoopSrc}`}></source>
             </video>
         )
     }
@@ -41,7 +41,7 @@ function FullScreenView({ onClick, source1, source2, source3, className }) {
 
     return (
         <div id="fs-overlay">
-            <button id="button" onClick={onClick}>Back</button>
+            <button id="button" onClick={() => {setShowFullScreen(false)}}>Back</button>
             <div className="media-row">
             <div className={`${className} arrows left`} onClick={prevButton}>&lt;</div>
                 <CardVideo />
