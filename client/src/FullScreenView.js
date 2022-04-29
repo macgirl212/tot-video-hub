@@ -3,17 +3,19 @@ import './stylesheets/fullScreenView.css'
 import React, { useState } from 'react';
 
 function FullScreenView({ card, className, setShowFullScreen }) {
+    const [videoLoop, setVideoLoop] = useState(0)
+    const [videoLoopSrc, setVideoLoopSrc] = useState(baseVid)
+
     const { baseVid, evolVid1, evolVid2 } = card.data
     let videoArray = [baseVid, evolVid1]
 
+    // if card is of ssr rarity, add the final evolution video to the video array
     if (evolVid2 !== "") {
         videoArray.push(evolVid2)
     }
 
-    let [videoLoop, setVideoLoop] = useState(0)
-    let [videoLoopSrc, setVideoLoopSrc] = useState(baseVid)
-
     const CardVideo = () => {
+        // get video from backend
         return (
             <video className="full-card-video" autoPlay muted loop>
                 <source src={`http://localhost:3001/api/v1/media/${videoLoopSrc}`}></source>
@@ -22,6 +24,7 @@ function FullScreenView({ card, className, setShowFullScreen }) {
     }
 
     const prevButton = () => {
+        // go backwards through the video source array or loop to the end if necessary
         if (videoLoop !== 0) {
             setVideoLoop(videoLoop = videoLoop - 1)
         } else {
@@ -31,6 +34,7 @@ function FullScreenView({ card, className, setShowFullScreen }) {
     }
 
     const nextButton = () => {
+        // go forwards through the video source array or loop to the beginning if necessary
         if (videoLoop !== videoArray.length - 1) {
             setVideoLoop(videoLoop = videoLoop + 1)
         } else {

@@ -11,6 +11,7 @@ function ArtemSr({ setVideoSrc, setHeader }) {
     const [cards, setCards] = useState([])
 
     const fullScreen = async (card) => {
+        // get card json data
         await axios.get(`http://localhost:3001/api/v1/${card._id}`, {
             headers: {
                 'Content-Type': 'application/json'
@@ -25,11 +26,12 @@ function ArtemSr({ setVideoSrc, setHeader }) {
     }
 
     const selectCard = async (card) => {
+        // set video embed link and header
         setVideoSrc(card.youTubeSrc)
         setHeader(card.title)
     }
 
-    async function getRCards() {
+    async function getSrCards() {
         // get card json from backend
         await axios.get('http://localhost:3001/api/v1/artem?type=sr', {
             headers: {
@@ -44,7 +46,7 @@ function ArtemSr({ setVideoSrc, setHeader }) {
     }
 
     useEffect(() => {
-        getRCards()
+        getSrCards()
     }, [])
 
     return (
