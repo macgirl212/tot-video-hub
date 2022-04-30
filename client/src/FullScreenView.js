@@ -3,14 +3,16 @@ import './stylesheets/fullScreenView.css'
 import React, { useState } from 'react';
 
 function FullScreenView({ card, className, setShowFullScreen }) {
-    const [videoLoop, setVideoLoop] = useState(0)
-    const [videoLoopSrc, setVideoLoopSrc] = useState(baseVid)
-
-    const { baseVid, evolVid1, evolVid2 } = card.data
+    
+    const { baseVid, evolVid1, evolVid2, type } = card.data
     let videoArray = [baseVid, evolVid1]
 
-    // if card is of ssr rarity, add the final evolution video to the video array
-    if (evolVid2 !== "") {
+    let [videoLoop, setVideoLoop] = useState(0)
+    let [videoLoopSrc, setVideoLoopSrc] = useState(baseVid)
+
+
+    // if card is of sr or ssr rarity, add the final evolution video to the video array
+    if (type === 'sr' || type === 'ssr') {
         videoArray.push(evolVid2)
     }
 

@@ -1,55 +1,71 @@
 //426x900 images
-import stretching from '../images/Artem_"Stretching".png'
-
 //1080x1920 videos
-// temp gallery videos from youtube
-import stretchingVid1 from '../images/Artem_"Stretching"_Base.mp4'
-import stretchingVid2 from '../images/Artem_"Stretching"_Evolve_1.mp4'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
-
-const artemMrCards = [
-    {
-        key: 1,
-        title: 'Stretching',
-        basePicture: stretching,
-        baseVid: stretchingVid1,
-        evolVid1: stretchingVid2,
-        videoSrc: 'https://www.youtube.com/embed/U3Q0ZP_MVUk'
-    }
-]
+import axios from 'axios'
 
 function ArtemMr({ setVideoSrc, setHeader }) {
     let [showFullScreen, setShowFullScreen] = useState(false)
     let [fullCard, setFullCard] = useState()
+    const [cards, setCards] = useState([])
 
-    const fullScreen = (card) => {
-        setShowFullScreen(showFullScreen = !showFullScreen)
-        setFullCard(card)
+    const fullScreen = async (card) => {
+        // get card json data
+        await axios.get(`http://localhost:3001/api/v1/${card._id}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => {
+            // store json data in cards state
+            setFullCard(data)
+            setShowFullScreen(showFullScreen = !showFullScreen) 
+            }
+        )
     }
 
-    const selectCard = (card) => {
-        setVideoSrc(card.videoSrc)
+    const selectCard = async (card) => {
+        // set video embed link and header
+        setVideoSrc(card.youTubeSrc)
         setHeader(card.title)
     }
+
+    async function getMrCards() {
+        // get card json from backend
+        await axios.get('http://localhost:3001/api/v1/artem?type=mr', {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => {
+            // store json data in cards state
+            setCards(data.data)
+            }
+        )
+    }
+
+    useEffect(() => {
+        getMrCards()
+    }, [])
 
     return (
         <div>
             { showFullScreen ? 
                 <FullScreenView
                     className={`artem-buttons`}
-                    title={fullCard.title}
-                    source1={fullCard.baseVid}
-                    source2={fullCard.evolVid1}
-                    onClick={() => fullScreen()} 
+                    card={fullCard}
+                    onClick={() => fullScreen()}
+                    setShowFullScreen={setShowFullScreen}
                 /> : null }
-            <div className="mr-cards">
-                {artemMrCards.map((card) => {
-                    return (<div className='card' key={card.key} onClick={() => selectCard(card)} onDoubleClick={() => fullScreen(card)}>
-                        <h3 className="artem-card-title">{card.title}</h3>
-                        <img className="card-img" src={`${card.basePicture}`} alt=''></img>
-                    </div>)
+            <div className="sr-cards">
+                {cards.map((card) => {
+                    return (
+                        <div className='card' key={card._id} onClick={() => selectCard(card)} onDoubleClick={() => fullScreen(card)}>
+                            <h3 className="artem-card-title">{card.title}</h3>
+                            <img className="card-img" src={`http://localhost:3001/api/v1/media/${card.basePicture}?type=mr`} alt={`${card.basePicture}`} />
+                        </div>
+                    )
                 })}
             </div>
         </div>
