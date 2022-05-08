@@ -12,7 +12,7 @@ const vynMrCards = [
     {
         key: 1,
         title: 'Morning Glory',
-        basePicture: morningGlory,
+        previewPicture: morningGlory,
         baseVid: morningGloryVid1,
         evolVid1: morningGloryVid2,
         videoSrc: 'https://www.youtube.com/embed/h9Zwt_YHNQY'
@@ -47,7 +47,7 @@ function VynMr({ setVideoSrc, setHeader }) {
                 {vynMrCards.map((card) => {
                     return (<div className='card' key={card.key} onClick={() => selectCard(card)} onDoubleClick={() => fullScreen(card)}>
                         <h3 className="vyn-card-title">{card.title}</h3>
-                        <img className="card-img" src={`${card.basePicture}`} alt=''></img>
+                        <img className="card-img" src={`${card.previewPicture}`} alt=''></img>
                     </div>)
                 })}
             </div>

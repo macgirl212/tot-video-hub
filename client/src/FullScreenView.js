@@ -20,7 +20,7 @@ function FullScreenView({ card, className, setShowFullScreen }) {
         // get video from backend
         return (
             <video className="full-card-video" autoPlay muted loop>
-                <source src={`http://localhost:3001/api/v1/media/${videoLoopSrc}`}></source>
+                <source src={`${videoLoopSrc}`}></source>
             </video>
         )
     }

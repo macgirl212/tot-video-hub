@@ -63,7 +63,7 @@ function ArtemMr({ setVideoSrc, setHeader }) {
                     return (
                         <div className='card' key={card._id} onClick={() => selectCard(card)} onDoubleClick={() => fullScreen(card)}>
                             <h3 className="artem-card-title">{card.title}</h3>
-                            <img className="card-img" src={`http://localhost:3001/api/v1/media/${card.basePicture}?type=mr`} alt={`${card.basePicture}`} />
+                            <img className="card-img" src={`http://localhost:3001/api/v1/media/${card.previewPicture}?type=mr`} alt={`${card.previewPicture}`} />
                         </div>
                     )
                 })}

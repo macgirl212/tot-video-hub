@@ -27,7 +27,7 @@ function LukeR() {
             {cards.map((card) => {
                 return (<div className='card r-bumper' key={card._id}>
                     <h3 className="luke-card-title">{card.title}</h3>
-                    <img className="card-img" src={`http://localhost:3001/api/v1/media/${card.basePicture}?type=r`} alt={`${card.title}`}></img>
+                    <img className="card-img" src={`${card.previewPicture}`} alt={`${card.title}`}></img>
                 </div>)
             })}
         </div>

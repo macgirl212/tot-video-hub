@@ -1,5 +1,5 @@
 //426x900 images
-import aStarInThePalm from '../images/Luke_"A_Star_in_the_Palm".png'
+// import aStarInThePalm from '../images/Luke_"A_Star_in_the_Palm".png'
 import amongTheGreatBlue from '../images/Luke_"Among_the_Great_Blue".png'
 import howIRememberYou from '../images/Luke_"How_I_Remember_You".png'
 import innerSanctum from '../images/Luke_"Inner_Sanctum".png'
@@ -10,9 +10,9 @@ import timelyRescue from '../images/Luke_"Timely_Rescue".png'
 import togetherWithYou from '../images/Luke_"Together_with_You".png'
 
 //1080x1920 videos
-import aStarInThePalmVid1 from '../images/Luke_ "A_Star_in_the_Palm"_Base.mp4'
-import aStarInThePalmVid2 from '../images/Luke_ "A_Star_in_the_Palm"_Evolve_1.mp4'
-import aStarInThePalmVid3 from '../images/Luke_ "A_Star_in_the_Palm"_Evolve_2.mp4'
+// import aStarInThePalmVid1 from '../images/Luke_ "A_Star_in_the_Palm"_Base.mp4'
+// import aStarInThePalmVid2 from '../images/Luke_ "A_Star_in_the_Palm"_Evolve_1.mp4'
+// import aStarInThePalmVid3 from '../images/Luke_ "A_Star_in_the_Palm"_Evolve_2.mp4'
 import amongTheGreatBlueVid1 from '../images/Luke_"Among_the_Great_Blue"_Base.mp4'
 import amongTheGreatBlueVid2 from '../images/Luke_"Among_the_Great_Blue"_Evolve_1.mp4'
 import amongTheGreatBlueVid3 from '../images/Luke_"Among_the_Great_Blue"_Evolve_2.mp4'
@@ -42,15 +42,6 @@ import React, { useState } from 'react';
 import FullScreenView from '../FullScreenView'
 
 const lukeSrCards = [
-    {
-        key: 1,
-        title: 'A Star in the Palm',
-        basePicture: aStarInThePalm,
-        baseVid: aStarInThePalmVid1,
-        evolVid1: aStarInThePalmVid2,
-        evolVid2: aStarInThePalmVid3,
-        videoSrc: 'https://www.youtube.com/embed/GBjXP1RsgqU'
-    },
     {
         key: 2,
         title: 'Among the Great Blue',
