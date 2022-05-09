@@ -27,6 +27,9 @@ const CardSchema = new mongoose.Schema({
     youTubeSrc: {
         type: String
     },
+    youTubeSrc2: {
+        type: String
+    },
     type: {
         type: String,
         enum: ["r", "mr", "sr", "ssr"],
