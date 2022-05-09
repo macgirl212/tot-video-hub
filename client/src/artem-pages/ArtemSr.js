@@ -1,8 +1,6 @@
-//426x900 images
-//1080x1920 videos
-
 import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
+import getCards from '../controllers/GetCards'
 import axios from 'axios'
 
 function ArtemSr({ setVideoSrc, setHeader }) {
@@ -31,22 +29,13 @@ function ArtemSr({ setVideoSrc, setHeader }) {
         setHeader(card.title)
     }
 
-    async function getSrCards() {
-        // get card json from backend
-        await axios.get('http://localhost:3001/api/v1/artem?type=sr', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(data => {
-            // store json data in cards state
-            setCards(data.data)
+    useEffect(() => {
+        getCards('artem', 'sr')
+            .then(data => {
+                // set response as card data
+                setCards(data)
             }
         )
-    }
-
-    useEffect(() => {
-        getSrCards()
     }, [])
 
     return (

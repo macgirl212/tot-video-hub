@@ -1,25 +1,16 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import getCards from '../controllers/GetCards'
 
 function VynR() {
     const [cards, setCards] = useState([])
-    
-    async function getRCards() {
-        // get card json from backend
-        await axios.get('http://localhost:3001/api/v1/vyn?type=r', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(data => {
-            // store json data in cards state
-            setCards(data.data)
-            }
-        )
-    }
 
     useEffect(() => {
-        getRCards()
+        getCards('vyn', 'r')
+            .then(data => {
+                // set response as card data
+                setCards(data)
+            }
+        )
     }, [])
 
     return (

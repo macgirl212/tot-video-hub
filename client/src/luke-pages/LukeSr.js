@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
+import getCards from '../controllers/GetCards'
 import axios from 'axios'
 
 function LukeSr({ setVideoSrc, setHeader }) {
@@ -28,22 +29,13 @@ function LukeSr({ setVideoSrc, setHeader }) {
         setHeader(card.title)
     }
 
-    async function getSrCards() {
-        // get card json from backend
-        await axios.get('http://localhost:3001/api/v1/luke?type=sr', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(data => {
-            // store json data in cards state
-            setCards(data.data)
+    useEffect(() => {
+        getCards('luke', 'sr')
+            .then(data => {
+                // set response as card data
+                setCards(data)
             }
         )
-    }
-
-    useEffect(() => {
-        getSrCards()
     }, [])
 
     return (
