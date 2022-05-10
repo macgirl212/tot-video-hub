@@ -1,54 +1,60 @@
-//426x900 images
-import morningGlory from '../images/Vyn_"Morning_Glory".png'
-
-//1080x1920 videos
-import morningGloryVid1 from '../images/Vyn_"Morning_Glory"_Base.mp4'
-import morningGloryVid2 from '../images/Vyn_"Morning_Glory"_Evolve_1.mp4'
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
-
-const vynMrCards = [
-    {
-        key: 1,
-        title: 'Morning Glory',
-        previewPicture: morningGlory,
-        baseVid: morningGloryVid1,
-        evolVid1: morningGloryVid2,
-        videoSrc: 'https://www.youtube.com/embed/h9Zwt_YHNQY'
-    }
-]
+import getCards from '../controllers/GetCards'
+import axios from 'axios'
 
 function VynMr({ setVideoSrc, setHeader }) {
     let [showFullScreen, setShowFullScreen] = useState(false)
     let [fullCard, setFullCard] = useState()
+    const [cards, setCards] = useState([])
 
-    const fullScreen = (card) => {
-        setShowFullScreen(showFullScreen = !showFullScreen)
-        setFullCard(card)
+    const fullScreen = async (card) => {
+        // get card json data
+        await axios.get(`http://localhost:3001/api/v1/${card._id}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => {
+            // store json data in cards state
+            setFullCard(data)
+            setShowFullScreen(showFullScreen = !showFullScreen) 
+            }
+        )
     }
 
-    const selectCard = (card) => {
-        setVideoSrc(card.videoSrc)
+    const selectCard = async (card) => {
+        // set video embed link and header
+        setVideoSrc(card.youTubeSrc)
         setHeader(card.title)
     }
+
+    useEffect(() => {
+        getCards('vyn', 'mr')
+            .then(data => {
+                // set response as card data
+                setCards(data)
+            }
+        )
+    }, [])
 
     return (
         <div>
             { showFullScreen ? 
                 <FullScreenView
                     className={`vyn-buttons`}
-                    title={fullCard.title}
-                    source1={fullCard.baseVid}
-                    source2={fullCard.evolVid1}
-                    onClick={() => fullScreen()} 
+                    card={fullCard}
+                    onClick={() => fullScreen()}
+                    setShowFullScreen={setShowFullScreen}
                 /> : null }
             <div className="mr-cards">
-                {vynMrCards.map((card) => {
-                    return (<div className='card' key={card.key} onClick={() => selectCard(card)} onDoubleClick={() => fullScreen(card)}>
-                        <h3 className="vyn-card-title">{card.title}</h3>
-                        <img className="card-img" src={`${card.previewPicture}`} alt=''></img>
-                    </div>)
+                {cards.map((card) => {
+                    return (
+                        <div className='card' key={card._id} onClick={() => selectCard(card)} onDoubleClick={() => fullScreen(card)}>
+                            <h3 className="vyn-card-title">{card.title}</h3>
+                            <img className="card-img" src={`${card.previewPicture}`} alt={`${card.previewPicture}`} />
+                        </div>
+                    )
                 })}
             </div>
         </div>

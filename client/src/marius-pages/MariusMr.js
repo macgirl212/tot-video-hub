@@ -1,11 +1,9 @@
-//426x900 images
-//1080x1920 videos
-
 import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
+import getCards from '../controllers/GetCards'
 import axios from 'axios'
 
-function ArtemMr({ setVideoSrc, setHeader }) {
+function MariusMr({ setVideoSrc, setHeader }) {
     let [showFullScreen, setShowFullScreen] = useState(false)
     let [fullCard, setFullCard] = useState()
     const [cards, setCards] = useState([])
@@ -31,38 +29,29 @@ function ArtemMr({ setVideoSrc, setHeader }) {
         setHeader(card.title)
     }
 
-    async function getMrCards() {
-        // get card json from backend
-        await axios.get('http://localhost:3001/api/v1/artem?type=mr', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(data => {
-            // store json data in cards state
-            setCards(data.data)
+    useEffect(() => {
+        getCards('marius', 'mr')
+            .then(data => {
+                // set response as card data
+                setCards(data)
             }
         )
-    }
-
-    useEffect(() => {
-        getMrCards()
     }, [])
 
     return (
         <div>
             { showFullScreen ? 
                 <FullScreenView
-                    className={`artem-buttons`}
+                    className={`marius-buttons`}
                     card={fullCard}
                     onClick={() => fullScreen()}
                     setShowFullScreen={setShowFullScreen}
                 /> : null }
-            <div className="sr-cards">
+            <div className="mr-cards">
                 {cards.map((card) => {
                     return (
                         <div className='card' key={card._id} onClick={() => selectCard(card)} onDoubleClick={() => fullScreen(card)}>
-                            <h3 className="artem-card-title">{card.title}</h3>
+                            <h3 className="marius-card-title">{card.title}</h3>
                             <img className="card-img" src={`${card.previewPicture}`} alt={`${card.previewPicture}`} />
                         </div>
                     )
@@ -72,4 +61,4 @@ function ArtemMr({ setVideoSrc, setHeader }) {
     )
 }
 
-export default ArtemMr;
+export default MariusMr;
