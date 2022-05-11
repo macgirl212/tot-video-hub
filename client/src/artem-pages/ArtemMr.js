@@ -25,7 +25,7 @@ function ArtemMr({ setVideoSrc, setHeader }) {
         )
     }
 
-    const selectCard = async (card) => {
+    const selectCard = (card) => {
         // set video embed link and header
         setVideoSrc(card.youTubeSrc)
         setHeader(card.title)

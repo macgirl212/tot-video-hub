@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
 import getCards from '../controllers/GetCards'
+//import selectCard from '../controllers/SelectCard'
 import axios from 'axios'
 
 function VynSr({ setVideoSrc, setHeader }) {
@@ -22,7 +23,7 @@ function VynSr({ setVideoSrc, setHeader }) {
             }
         )
     }
-    const selectCard = async (card) => {
+    const selectCard = (card) => {
         // set video embed link and header
         setVideoSrc(card.youTubeSrc)
         setHeader(card.title)
