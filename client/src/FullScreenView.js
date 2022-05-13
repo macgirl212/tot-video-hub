@@ -1,4 +1,4 @@
-import './stylesheets/fullScreenView.css'
+import './stylesheets/fullScreenView.scss'
 
 import React, { useState } from 'react';
 

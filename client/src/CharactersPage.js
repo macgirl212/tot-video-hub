@@ -1,5 +1,5 @@
-import './stylesheets/home.css'
-import './stylesheets/pages.css'
+import './stylesheets/home.scss'
+import './stylesheets/pages.scss'
 import ArtemIcon from './artem-pages/ArtemIcon.js'
 import LukeIcon from './luke-pages/LukeIcon.js'
 import MariusIcon from './marius-pages/MariusIcon.js'

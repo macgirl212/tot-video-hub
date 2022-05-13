@@ -1,4 +1,4 @@
-import './stylesheets/navbar.css'
+import './stylesheets/navbar.scss'
 
 function Navbar({ header }) {
     return (
