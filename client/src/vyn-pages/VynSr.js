@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
 import getCards from '../controllers/GetCards'
-//import selectCard from '../controllers/SelectCard'
 import axios from 'axios'
 
 function VynSr({ setVideoSrc, setHeader }) {
@@ -19,7 +18,7 @@ function VynSr({ setVideoSrc, setHeader }) {
         .then(data => {
             // store json data in cards state
             setFullCard(data)
-            setShowFullScreen(showFullScreen = !showFullScreen) 
+            setShowFullScreen(showFullScreen = !showFullScreen)
             }
         )
     }
