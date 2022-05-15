@@ -18,8 +18,7 @@ $transition-out: 200ms;
     padding: 20px;
     font-size: 1.5rem;
     letter-spacing: 0.2em;
-    transition-duration: 1s;
-    transition: visibility 0s $transition-in, opacity $transition-in linear;
+    color: rgb(0, 0, 0);
 }
 
 @mixin smallNameTitle {
