@@ -1,23 +1,52 @@
+/* Table of Contents
+    - Variables
+    - Mixins
+    - General
+        - Background
+        - Video Section
+        - Buttons
+        - Card Display
+    - Characters
+        - Artem
+        - Luke
+        - Marius
+        - Vyn
+*/
+
+/*************
+  Variables
+*************/
+$text-color: rgb(0, 0, 0);
+$artem-background: rgb(217, 159, 158);
+$artem-card-banner: rgb(206, 89, 87);
+$luke-background: rgb(253, 233, 180);
+$luke-card-banner: rgb(243, 202, 89);
+$marius-background: rgb(181, 176, 208);
+$marius-card-banner: rgb(113, 99, 192);
+$vyn-background: rgb(180, 202, 189);
+$vyn-card-banner: rgb(89, 168, 122);
+
+
 /*************
     Mixins
 *************/
 
-@mixin cardArea {
-    position: absolute;
-    right: 0;
-    bottom: 6%;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 625px;
-    scroll-snap-type: y mandatory;
-    flex-basis: 50%;
-    margin-top: 10px;
-    margin-right: 2%;
-    overflow-y: scroll;
+@mixin autoLeftRightMargin {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-//GENERAL
+@mixin columnFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+/*************
+    General
+*************/
+
+// Background
+
 .character-logo {
     position: absolute;
     left: 0;
@@ -28,12 +57,13 @@
     z-index: 1;
 }
 
+// Video Section
+
 .video-container {
+    @include autoLeftRightMargin();
     width: 640px;
     height: 360px;
     margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
     z-index: 1;
     position: relative;
 
@@ -43,15 +73,16 @@
     }
 }
 
+// Buttons
+
 .button-row {
+    @include autoLeftRightMargin();
     display: flex;
     justify-content: space-around;
     width: 600px;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 40px;
     position: relative;
-    z-index: 3;
+    z-index: 2;
 
     button {
         width: 100px;
@@ -64,29 +95,31 @@
     }
 }
 
-.ssr-cards {
-    @include cardArea();
-}
+// Card Display
 
-.mr-cards {
-    @include cardArea();
-}
-
-.sr-cards {
-    @include cardArea();
-}
-
+.ssr-cards,
+.mr-cards,
+.sr-cards,
 .r-cards {
-    @include cardArea();
+    @include columnFlex();
+    position: absolute;
+    right: 0;
+    bottom: 6%;
+    width: 300px;
+    height: 625px;
+    scroll-snap-type: y mandatory;
+    flex-basis: 50%;
+    margin-top: 10px;
+    margin-right: 2%;
+    overflow-y: scroll;
 }
 
 .card {
-    display: flex;
+    @include columnFlex();
     scroll-snap-align: start;
-    flex-direction: column;
     width: 290px;
     margin: 5px;
-    color: black;
+    color: $text-color;
     text-align: center;
     font-size: 24px;
 }
@@ -100,107 +133,16 @@
     height: auto;
 }
 
-//ARTEM'S PAGE
-.red-background {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(217, 159, 158);
-    position: absolute;
-    z-index: 1;
+/*************
+  Characters
+*************/
 
-    #button {
-        position: relative;
-        margin-top: 110px;
-        margin-left: 30px;
-    }
-}
-
-#artem-main-img {
-    margin-left: -60px;
-    filter: opacity(50%);
-}
-
-.artem-card-title {
-    font-size: 20px;
-    background-color: rgb(206, 89, 87);
-    letter-spacing: 0.1em;
-    transform: translateY(10px);
-}
-
-.artem-call-line {
-    background-color: rgb(206, 89, 87);
-    transform: translateY(-28px);
-}
-
-//LUKE'S PAGE
-.yellow-background {
-    width: 100vw;
-    height: 100vh;
-    color: black;
-    background-color: rgb(253, 233, 180);
-    position: absolute;
-
-    #button {
-        position: relative;
-        margin-top: 110px;
-        margin-left: 30px;
-    }
-}
-
-.luke-card-title {
-    font-size: 20px;
-    background-color: rgb(243, 202, 89);
-    letter-spacing: 0.1em;
-    transform: translateY(10px);
-}
-
-.luke-call-line {
-    background-color: rgb(243, 202, 89);
-    transform: translateY(-28px);
-}
-
-#luke-main-img {
-    margin-left: -168px;
-}
-
-//MARIUS' PAGE
-.purple-background {
-    width: 100vw;
-    height: 100vh;
-    color: black;
-    background-color: rgb(181, 176, 208);
-    position: absolute;
-
-    #button {
-        position: relative;
-        margin-top: 110px;
-        margin-left: 30px;
-    }
-}
-
-#marius-main-img {
-    margin-left: -150px;
-}
-
-.marius-card-title {
-    font-size: 20px;
-    background-color: rgb(113, 99, 192);
-    letter-spacing: 0.1em;
-    transform: translateY(10px);
-}
-
-.marius-call-line {
-    background-color: rgb(113, 99, 192);
-    transform: translateY(-28px);
-}
-
-//VYN'S PAGE
+.red-background,
+.yellow-background,
+.purple-background,
 .green-background {
     width: 100vw;
     height: 100vh;
-    color: black;
-    background-color: rgb(180, 202, 189);
-    position: absolute;
 
     #button {
         position: relative;
@@ -209,18 +151,63 @@
     }
 }
 
-#vyn-main-img {
-    margin-left: -70px;
-}
-
+.artem-card-title,
+.luke-card-title,
+.marius-card-title,
 .vyn-card-title {
     font-size: 20px;
-    background-color: rgb(89, 168, 122);
     letter-spacing: 0.1em;
     transform: translateY(10px);
 }
 
+.artem-call-line,
+.luke-call-line,
+.marius-call-line,
 .vyn-call-line {
-    background-color: rgb(89, 168, 122);
     transform: translateY(-28px);
+}
+
+// Artem
+
+.red-background {
+    background-color: $artem-background;
+}
+
+.artem-card-title,
+.artem-call-line {
+    background-color: $artem-card-banner;
+}
+
+// Luke
+
+.yellow-background {
+    background-color: $luke-background;
+}
+
+.luke-card-title,
+.luke-call-line {
+    background-color: $luke-card-banner;
+}
+
+// Marius
+
+.purple-background {
+    background-color: $marius-background;
+}
+
+
+.marius-card-title,
+.marius-call-line {
+    background-color: $marius-card-banner;
+}
+
+// Vyn
+
+.green-background {
+    background-color: $vyn-background;
+}
+
+.vyn-card-title,
+.vyn-call-line {
+    background-color: $vyn-card-banner;
 }
