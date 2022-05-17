@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
-import getCards from '../controllers/GetCards'
+import getCards from '../components/GetCards'
 import axios from 'axios'
 
 function LukeMr({ setVideoSrc, setHeader }) {

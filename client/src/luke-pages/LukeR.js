@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import getCards from '../controllers/GetCards'
+import getCards from '../components/GetCards'
 
 function LukeR() {
     const [cards, setCards] = useState([])

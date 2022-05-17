@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import FullScreenView from '../FullScreenView'
+import getCards from '../components/GetCards'
 import axios from 'axios'
 
 function ArtemMr({ setVideoSrc, setHeader }) {
@@ -31,22 +32,13 @@ function ArtemMr({ setVideoSrc, setHeader }) {
         setHeader(card.title)
     }
 
-    async function getMrCards() {
-        // get card json from backend
-        await axios.get('http://localhost:3001/api/v1/artem?type=mr', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(data => {
-            // store json data in cards state
-            setCards(data.data)
+    useEffect(() => {
+        getCards('artem', 'mr')
+            .then(data => {
+                // set response as card data
+                setCards(data)
             }
         )
-    }
-
-    useEffect(() => {
-        getMrCards()
     }, [])
 
     return (
