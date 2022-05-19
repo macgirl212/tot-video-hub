@@ -1,8 +1,8 @@
 import mariusLogo from '../images/Marius-Logo.png';
-import MariusR from './MariusR.js';
-import MariusSr from './MariusSr.js';
-import MariusMr from './MariusMr.js';
-import MariusSsr from './MariusSsr.js';
+import MariusR from './MariusR';
+import MariusSr from './MariusSr';
+import MariusMr from './MariusMr';
+import MariusSsr from './MariusSsr';
 import Navbar from '../Navbar';
 import initialCardsState from '../store/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
@@ -14,12 +14,22 @@ function MariusPage() {
 	const [videoSrc, setVideoSrc] = useState(
 		'https://www.youtube.com/embed/1j2kWZMGx4s'
 	);
+	const [youTubeSearch, setYouTubeSearch] = useState(
+		'https://www.youtube.com/results?search_query=Tears+of+Themis+Marius+von+Hagen'
+	);
 	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
 
 	const findR = () => {
 		dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/1j2kWZMGx4s');
+		setYouTubeSearch(
+			'https://www.youtube.com/results?search_query=Tears+of+Themis+Marius+von+Hagen'
+		);
 		setHeader('Marius von Hagen');
+	};
+
+	const selectYTSearch = () => {
+		window.open(youTubeSearch);
 	};
 
 	return (
@@ -83,15 +93,32 @@ function MariusPage() {
 						/>
 					</button>
 				</div>
+				<div>
+					<p className="link" onClick={selectYTSearch}>
+						Broken link? Find alternate videos here.
+					</p>
+				</div>
 				{state.R ? <MariusR /> : null}
 				{state.SR ? (
-					<MariusSr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<MariusSr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.MR ? (
-					<MariusMr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<MariusMr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.SSR ? (
-					<MariusSsr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<MariusSsr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 			</div>
 		</>

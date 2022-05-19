@@ -1,8 +1,8 @@
 import lukeLogo from '../images/Luke-Logo.png';
-import LukeR from './LukeR.js';
-import LukeSr from './LukeSr.js';
-import LukeMr from './LukeMr.js';
-import LukeSsr from './LukeSsr.js';
+import LukeR from './LukeR';
+import LukeSr from './LukeSr';
+import LukeMr from './LukeMr';
+import LukeSsr from './LukeSsr';
 import Navbar from '../Navbar';
 import initialCardsState from '../store/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
@@ -14,12 +14,22 @@ function LukePage() {
 	const [videoSrc, setVideoSrc] = useState(
 		'https://www.youtube.com/embed/w4cQ70fAh2Q'
 	);
+	const [youTubeSearch, setYouTubeSearch] = useState(
+		'https://www.youtube.com/results?search_query=Tears+of+Themis+Luke+Pearce'
+	);
 	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
 
 	const findR = () => {
 		dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/w4cQ70fAh2Q');
+		setYouTubeSearch(
+			'https://www.youtube.com/results?search_query=Tears+of+Themis+Luke+Pearce'
+		);
 		setHeader('Luke Pearce');
+	};
+
+	const selectYTSearch = () => {
+		window.open(youTubeSearch);
 	};
 
 	return (
@@ -79,15 +89,32 @@ function LukePage() {
 						/>
 					</button>
 				</div>
+				<div>
+					<p className="link" onClick={selectYTSearch}>
+						Broken link? Find alternate videos here.
+					</p>
+				</div>
 				{state.R ? <LukeR /> : null}
 				{state.SR ? (
-					<LukeSr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<LukeSr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.MR ? (
-					<LukeMr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<LukeMr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.SSR ? (
-					<LukeSsr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<LukeSsr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 			</div>
 		</>

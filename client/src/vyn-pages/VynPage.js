@@ -1,8 +1,8 @@
 import vynLogo from '../images/Vyn-Logo.png';
-import VynR from './VynR.js';
-import VynSr from './VynSr.js';
-import VynMr from './VynMr.js';
-import VynSsr from './VynSsr.js';
+import VynR from './VynR';
+import VynSr from './VynSr';
+import VynMr from './VynMr';
+import VynSsr from './VynSsr';
 import Navbar from '../Navbar';
 import initialCardsState from '../store/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
@@ -14,12 +14,22 @@ function VynPage() {
 	const [videoSrc, setVideoSrc] = useState(
 		'https://www.youtube.com/embed/qn4zDDSxP24'
 	);
+	const [youTubeSearch, setYouTubeSearch] = useState(
+		'https://www.youtube.com/results?search_query=Tears+of+Themis+Vyn+Richter'
+	);
 	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
 
 	const findR = () => {
 		dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/qn4zDDSxP24');
+		setYouTubeSearch(
+			'https://www.youtube.com/results?search_query=Tears+of+Themis+Vyn+Richter'
+		);
 		setHeader('Vyn Richter');
+	};
+
+	const selectYTSearch = () => {
+		window.open(youTubeSearch);
 	};
 
 	return (
@@ -79,15 +89,32 @@ function VynPage() {
 						/>
 					</button>
 				</div>
+				<div>
+					<p className="link" onClick={selectYTSearch}>
+						Broken link? Find alternate videos here.
+					</p>
+				</div>
 				{state.R ? <VynR /> : null}
 				{state.SR ? (
-					<VynSr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<VynSr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.MR ? (
-					<VynMr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<VynMr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.SSR ? (
-					<VynSsr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<VynSsr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 			</div>
 		</>

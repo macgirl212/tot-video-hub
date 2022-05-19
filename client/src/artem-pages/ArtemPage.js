@@ -1,8 +1,8 @@
 import artemLogo from '../images/Artem-Logo.png';
-import ArtemR from './ArtemR.js';
-import ArtemSr from './ArtemSr.js';
+import ArtemR from './ArtemR';
+import ArtemSr from './ArtemSr';
 import ArtemMr from './ArtemMr';
-import ArtemSsr from './ArtemSsr.js';
+import ArtemSsr from './ArtemSsr';
 import Navbar from '../Navbar';
 import initialCardsState from '../store/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
@@ -14,12 +14,22 @@ function ArtemPage() {
 	const [videoSrc, setVideoSrc] = useState(
 		'https://www.youtube.com/embed/YXy2wSvKI3A'
 	);
+	const [youTubeSearch, setYouTubeSearch] = useState(
+		'https://www.youtube.com/results?search_query=Tears+of+Themis+Artem+Wing'
+	);
 	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
 
 	const findR = () => {
 		dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/YXy2wSvKI3A');
+		setYouTubeSearch(
+			'https://www.youtube.com/results?search_query=Tears+of+Themis+Artem+Wing'
+		);
 		setHeader('Artem Wing');
+	};
+
+	const selectYTSearch = () => {
+		window.open(youTubeSearch);
 	};
 
 	return (
@@ -79,15 +89,32 @@ function ArtemPage() {
 						/>
 					</button>
 				</div>
+				<div>
+					<p className="link" onClick={selectYTSearch}>
+						Broken link? Find alternate videos here.
+					</p>
+				</div>
 				{state.R ? <ArtemR /> : null}
 				{state.SR ? (
-					<ArtemSr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<ArtemSr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.MR ? (
-					<ArtemMr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<ArtemMr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 				{state.SSR ? (
-					<ArtemSsr setVideoSrc={setVideoSrc} setHeader={setHeader} />
+					<ArtemSsr
+						setVideoSrc={setVideoSrc}
+						setHeader={setHeader}
+						setYouTubeSearch={setYouTubeSearch}
+					/>
 				) : null}
 			</div>
 		</>
