@@ -1,8 +1,8 @@
 const initialCardsState = {
-    R: false,
-    MR: false,
-    SR: false,
-    SSR: false
-}
+	R: false,
+	MR: false,
+	SR: false,
+	SSR: false,
+};
 
-export default initialCardsState
+export default initialCardsState;

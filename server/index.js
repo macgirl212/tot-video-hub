@@ -1,35 +1,40 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const express = require('express')
-const connectDB = require('./db/connect')
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const express = require('express');
+const connectDB = require('./db/connect');
 
-const cardRouter = require('./routes/cards')
-const uploadRouter = require('./convertImage')
+const cardRouter = require('./routes/cards');
+const uploadRouter = require('./convertImage');
 
-const app = express()
+const app = express();
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
-    res.send('Hello world!')
-})
+	res.send('Hello world!');
+});
 
-app.use('/api/v1/', cardRouter)
-app.use('/api/v1/media', uploadRouter)
+app.use('/api/v1/', cardRouter);
+app.use('/api/v1/media', uploadRouter);
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3001;
 
 const start = async () => {
-    try {
-        await connectDB(process.env.MONGO_URI)
-        app.listen(port, console.log(`Server is connected to database and listening on port ${3001}...`))
-    } catch (error) {
-        console.error(error)
-    }
-}
+	try {
+		await connectDB(process.env.MONGO_URI);
+		app.listen(
+			port,
+			console.log(
+				`Server is connected to database and listening on port ${3001}...`
+			)
+		);
+	} catch (error) {
+		console.error(error);
+	}
+};
 
-start()
+start();

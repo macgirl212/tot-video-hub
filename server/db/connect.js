@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const connectDB = (url) => {
-    return mongoose.connect(url, {
-        useNewUrlParser: true
-    })
-}
+	return mongoose.connect(url, {
+		useNewUrlParser: true,
+	});
+};
 
-module.exports = connectDB
+module.exports = connectDB;
