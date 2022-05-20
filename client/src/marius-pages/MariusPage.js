@@ -6,6 +6,11 @@ import MariusSsr from './MariusSsr';
 import Navbar from '../Navbar';
 import initialCardsState from '../store/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
+import SSRButton from '../components/buttons/SSRButton';
+import SRButton from '../components/buttons/SRButton';
+import MRButton from '../components/buttons/MRButton';
+import RButton from '../components/buttons/RButton';
+import AltLinkButton from '../components/AltLinkButton';
 import { useState, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -55,49 +60,12 @@ function MariusPage() {
 					></iframe>
 				</div>
 				<div className="button-row">
-					<button
-						className="card-button"
-						onClick={() => dispatch({ type: 'SSR' })}
-					>
-						<img
-							className="button-text"
-							src="https://static.miraheze.org/tearsofthemiswiki/thumb/c/c9/SSR_icon.png/92px-SSR_icon.png"
-							alt="SSR"
-						/>
-					</button>
-					<button
-						className="card-button"
-						onClick={() => dispatch({ type: 'MR' })}
-					>
-						<img
-							className="button-text"
-							src="https://static.miraheze.org/tearsofthemiswiki/thumb/8/82/MR_icon.png/78px-MR_icon.png"
-							alt="MR"
-						/>
-					</button>
-					<button
-						className="card-button"
-						onClick={() => dispatch({ type: 'SR' })}
-					>
-						<img
-							className="button-text"
-							src="https://static.miraheze.org/tearsofthemiswiki/thumb/f/f7/SR_icon.png/76px-SR_icon.png"
-							alt="SR"
-						/>
-					</button>
-					<button className="card-button" onClick={findR}>
-						<img
-							className="button-text"
-							src="https://static.miraheze.org/tearsofthemiswiki/thumb/b/bf/R_icon.png/43px-R_icon.png"
-							alt="R"
-						/>
-					</button>
+					<SSRButton onClick={() => dispatch({ type: 'SSR' })} />
+					<SRButton onClick={() => dispatch({ type: 'SR' })} />
+					<MRButton onClick={() => dispatch({ type: 'MR' })} />
+					<RButton onClick={findR} />
 				</div>
-				<div>
-					<p className="link" onClick={selectYTSearch}>
-						Broken link? Find alternate videos here.
-					</p>
-				</div>
+				<AltLinkButton onClick={selectYTSearch} />
 				{state.R ? <MariusR /> : null}
 				{state.SR ? (
 					<MariusSr
