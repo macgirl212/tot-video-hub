@@ -4,7 +4,7 @@ import MariusSr from './MariusSr';
 import MariusMr from './MariusMr';
 import MariusSsr from './MariusSsr';
 import Navbar from '../Navbar';
-import initialCardsState from '../store/initialCardsState';
+import initialCardsState from '../store/states/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';

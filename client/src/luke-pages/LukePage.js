@@ -4,7 +4,7 @@ import LukeSr from './LukeSr';
 import LukeMr from './LukeMr';
 import LukeSsr from './LukeSsr';
 import Navbar from '../Navbar';
-import initialCardsState from '../store/initialCardsState';
+import initialCardsState from '../store/states/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';

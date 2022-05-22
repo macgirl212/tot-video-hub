@@ -4,7 +4,7 @@ import ArtemSr from './ArtemSr';
 import ArtemMr from './ArtemMr';
 import ArtemSsr from './ArtemSsr';
 import Navbar from '../Navbar';
-import initialCardsState from '../store/initialCardsState';
+import initialCardsState from '../store/states/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';

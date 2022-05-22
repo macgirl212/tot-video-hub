@@ -4,7 +4,7 @@ import VynSr from './VynSr';
 import VynMr from './VynMr';
 import VynSsr from './VynSsr';
 import Navbar from '../Navbar';
-import initialCardsState from '../store/initialCardsState';
+import initialCardsState from '../store/states/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';
