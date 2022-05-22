@@ -3,7 +3,6 @@ import ArtemR from './ArtemR';
 import ArtemSr from './ArtemSr';
 import ArtemMr from './ArtemMr';
 import ArtemSsr from './ArtemSsr';
-import Navbar from '../Navbar';
 import initialCardsState from '../store/states/initialCardsState';
 import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
@@ -11,35 +10,52 @@ import SRButton from '../components/buttons/SRButton';
 import MRButton from '../components/buttons/MRButton';
 import RButton from '../components/buttons/RButton';
 import AltLinkButton from '../components/AltLinkButton';
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useContext, useEffect } from 'react';
+import { ReactReduxContext } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function ArtemPage() {
-	const [header, setHeader] = useState('Artem Wing');
+	// redux
+	const { store } = useContext(ReactReduxContext);
+
+	// states
 	const [videoSrc, setVideoSrc] = useState(
 		'https://www.youtube.com/embed/YXy2wSvKI3A'
 	);
 	const [youTubeSearch, setYouTubeSearch] = useState(
 		'https://www.youtube.com/results?search_query=Tears+of+Themis+Artem+Wing'
 	);
+	const [chosenCard, setChosenCard] = useState();
+
+	// local reducer
 	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
 
+	// r cards click handler
 	const findR = () => {
 		dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/YXy2wSvKI3A');
 		setYouTubeSearch(
 			'https://www.youtube.com/results?search_query=Tears+of+Themis+Artem+Wing'
 		);
-		setHeader('Artem Wing');
+		setChosenCard();
 	};
 
+	// opens a new window for alternate videos
 	const selectYTSearch = () => {
 		window.open(youTubeSearch);
 	};
 
+	useEffect(() => {
+		// changes navbar title as needed
+		if (!chosenCard) {
+			store.dispatch({ type: 'TITLE', payload: 'Artem Wing' });
+		} else {
+			store.dispatch({ type: 'TITLE', payload: chosenCard.title });
+		}
+	});
+
 	return (
 		<>
-			<Navbar header={header} />
 			<div className="red-background">
 				<Link to="/">
 					<button id="button">Back</button>
@@ -66,22 +82,22 @@ function ArtemPage() {
 				{state.SR ? (
 					<ArtemSr
 						setVideoSrc={setVideoSrc}
-						setHeader={setHeader}
 						setYouTubeSearch={setYouTubeSearch}
+						setChosenCard={setChosenCard}
 					/>
 				) : null}
 				{state.MR ? (
 					<ArtemMr
 						setVideoSrc={setVideoSrc}
-						setHeader={setHeader}
 						setYouTubeSearch={setYouTubeSearch}
+						setChosenCard={setChosenCard}
 					/>
 				) : null}
 				{state.SSR ? (
 					<ArtemSsr
 						setVideoSrc={setVideoSrc}
-						setHeader={setHeader}
 						setYouTubeSearch={setYouTubeSearch}
+						setChosenCard={setChosenCard}
 					/>
 				) : null}
 			</div>

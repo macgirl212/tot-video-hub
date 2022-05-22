@@ -1,6 +1,8 @@
 import './stylesheets/navbar.scss';
+import { useSelector } from 'react-redux';
 
-function Navbar({ header }) {
+function Navbar() {
+	const title = useSelector((state) => state.title);
 	return (
 		<div className="navbar">
 			<img
@@ -8,7 +10,7 @@ function Navbar({ header }) {
 				id="logo"
 				alt="Tears of Themis"
 			/>
-			<h1 id="title">{header}</h1>
+			<h1 id="title">{title}</h1>
 		</div>
 	);
 }

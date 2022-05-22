@@ -4,7 +4,7 @@ import getCards from '../components/GetCards';
 import ytSearchLink from '../components/YTSearchLink';
 import axios from 'axios';
 
-function MariusSr({ setVideoSrc, setYouTubeSearch, setHeader }) {
+function MariusSr({ setVideoSrc, setYouTubeSearch, setChosenCard }) {
 	let [showFullScreen, setShowFullScreen] = useState(false);
 	let [fullCard, setFullCard] = useState();
 	const [cards, setCards] = useState([]);
@@ -25,9 +25,9 @@ function MariusSr({ setVideoSrc, setYouTubeSearch, setHeader }) {
 	};
 	const selectCard = (card) => {
 		// set video embed link and header
+		setChosenCard(card);
 		setVideoSrc(card.youTubeSrc);
 		setYouTubeSearch(ytSearchLink(card.title));
-		setHeader(card.title);
 	};
 
 	useEffect(() => {

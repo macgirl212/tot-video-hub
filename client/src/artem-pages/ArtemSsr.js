@@ -4,7 +4,7 @@ import getCards from '../components/GetCards';
 import ytSearchLink from '../components/YTSearchLink';
 import axios from 'axios';
 
-function ArtemSsr({ setVideoSrc, setYouTubeSearch, setHeader }) {
+function ArtemSsr({ setVideoSrc, setYouTubeSearch, setChosenCard }) {
 	let [showFullScreen, setShowFullScreen] = useState(false);
 	let [fullCard, setFullCard] = useState();
 	const [cards, setCards] = useState([]);
@@ -25,16 +25,16 @@ function ArtemSsr({ setVideoSrc, setYouTubeSearch, setHeader }) {
 	};
 	const selectCard = (card) => {
 		// set video embed link and header
+		setChosenCard(card);
 		setVideoSrc(card.youTubeSrc);
 		setYouTubeSearch(ytSearchLink(card.title));
-		setHeader(card.title);
 	};
 
 	const selectCardCall = (card) => {
 		// set video embed link and header
+		setChosenCard(card);
 		setVideoSrc(card.youTubeSrc2);
 		setYouTubeSearch(ytSearchLink(card.title));
-		setHeader(card.title);
 	};
 
 	useEffect(() => {

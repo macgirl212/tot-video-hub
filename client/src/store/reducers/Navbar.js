@@ -1,6 +1,6 @@
 import initialNavbarState from '../states/initialNavbarState';
 
-function navbarReducer(state = initialNavbarState, action) {
+function navbar(state = initialNavbarState, action) {
 	switch (action.type) {
 		case 'TITLE':
 			return {
@@ -12,4 +12,4 @@ function navbarReducer(state = initialNavbarState, action) {
 	}
 }
 
-export default navbarReducer;
+export default navbar;

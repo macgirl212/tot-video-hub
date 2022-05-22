@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import navbarReducer from './reducers/NavbarReducer';
+import reducer from './reducers/Navbar';
 
-const store = configureStore({ reducer: navbarReducer });
+const store = configureStore({ reducer: reducer });
 
 export default store;
