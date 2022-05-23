@@ -23,6 +23,18 @@ function FullScreenView({ card, className, setShowFullScreen }) {
 		);
 	};
 
+	const NoVideoMsg = () => {
+		return (
+			<p className="no-video-msg">
+				Uh oh, there's no video. If you have this video, please share it to the{' '}
+				<a href="https://tot.wiki/wiki/Cards" target="_blank" rel="noreferrer">
+					Tears of Themis Wiki page
+				</a>
+				.
+			</p>
+		);
+	};
+
 	const prevButton = () => {
 		// go backwards through the video source array or loop to the end if necessary
 		if (videoLoop !== 0) {
@@ -57,7 +69,7 @@ function FullScreenView({ card, className, setShowFullScreen }) {
 				<div className={`${className} arrows left`} onClick={prevButton}>
 					&lt;
 				</div>
-				<CardVideo />
+				{videoLoopSrc ? <CardVideo /> : <NoVideoMsg />}
 				<div className={`${className} arrows right`} onClick={nextButton}>
 					&gt;
 				</div>

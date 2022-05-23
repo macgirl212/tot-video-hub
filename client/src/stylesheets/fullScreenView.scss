@@ -21,6 +21,21 @@
     max-height: 77vh;
 }
 
+.no-video-msg {
+    color: white;
+    text-align: center;
+    margin-top: 30vh;
+    font-size: 30px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+    a {
+        color:rgb(180, 202, 189);
+    }
+}
+
 .arrows {
     height: 100px;
     width: 100px;
