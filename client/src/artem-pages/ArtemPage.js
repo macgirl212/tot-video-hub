@@ -9,6 +9,7 @@ import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';
 import MRButton from '../components/buttons/MRButton';
 import RButton from '../components/buttons/RButton';
+import VideoContainer from '../components/VideoContainer';
 import AltLinkButton from '../components/AltLinkButton';
 import { useState, useReducer, useContext, useEffect } from 'react';
 import { ReactReduxContext } from 'react-redux';
@@ -55,53 +56,42 @@ function ArtemPage() {
 	});
 
 	return (
-		<>
-			<div className="red-background">
-				<Link to="/">
-					<button id="button">Back</button>
-				</Link>
-				<img src={artemLogo} alt="Artem Wing" className="character-logo"></img>
-				<div className="video-container">
-					<iframe
-						className="screen"
-						src={`${videoSrc}`}
-						title="YouTube video player"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowFullScreen
-					></iframe>
-				</div>
-				<div className="button-row">
-					<SSRButton onClick={() => dispatch({ type: 'SSR' })} />
-					<SRButton onClick={() => dispatch({ type: 'SR' })} />
-					<MRButton onClick={() => dispatch({ type: 'MR' })} />
-					<RButton onClick={findR} />
-				</div>
-				<AltLinkButton onClick={selectYTSearch} />
-				{state.R ? <ArtemR /> : null}
-				{state.SR ? (
-					<ArtemSr
-						setVideoSrc={setVideoSrc}
-						setYouTubeSearch={setYouTubeSearch}
-						setChosenCard={setChosenCard}
-					/>
-				) : null}
-				{state.MR ? (
-					<ArtemMr
-						setVideoSrc={setVideoSrc}
-						setYouTubeSearch={setYouTubeSearch}
-						setChosenCard={setChosenCard}
-					/>
-				) : null}
-				{state.SSR ? (
-					<ArtemSsr
-						setVideoSrc={setVideoSrc}
-						setYouTubeSearch={setYouTubeSearch}
-						setChosenCard={setChosenCard}
-					/>
-				) : null}
+		<div className="red-background">
+			<Link to="/">
+				<button id="button">Back</button>
+			</Link>
+			<img src={artemLogo} alt="Artem Wing" className="character-logo"></img>
+			<VideoContainer videoSrc={videoSrc} />
+			<div className="button-row">
+				<SSRButton onClick={() => dispatch({ type: 'SSR' })} />
+				<SRButton onClick={() => dispatch({ type: 'SR' })} />
+				<MRButton onClick={() => dispatch({ type: 'MR' })} />
+				<RButton onClick={findR} />
 			</div>
-		</>
+			<AltLinkButton onClick={selectYTSearch} />
+			{state.R ? <ArtemR /> : null}
+			{state.SR ? (
+				<ArtemSr
+					setVideoSrc={setVideoSrc}
+					setYouTubeSearch={setYouTubeSearch}
+					setChosenCard={setChosenCard}
+				/>
+			) : null}
+			{state.MR ? (
+				<ArtemMr
+					setVideoSrc={setVideoSrc}
+					setYouTubeSearch={setYouTubeSearch}
+					setChosenCard={setChosenCard}
+				/>
+			) : null}
+			{state.SSR ? (
+				<ArtemSsr
+					setVideoSrc={setVideoSrc}
+					setYouTubeSearch={setYouTubeSearch}
+					setChosenCard={setChosenCard}
+				/>
+			) : null}
+		</div>
 	);
 }
 
