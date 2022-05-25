@@ -3,21 +3,20 @@ import LukeR from './LukeR';
 import LukeSr from './LukeSr';
 import LukeMr from './LukeMr';
 import LukeSsr from './LukeSsr';
-import initialCardsState from '../store/states/initialCardsState';
-import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';
 import MRButton from '../components/buttons/MRButton';
 import RButton from '../components/buttons/RButton';
 import VideoContainer from '../components/VideoContainer';
 import AltLinkButton from '../components/AltLinkButton';
-import { useState, useReducer, useContext, useEffect } from 'react';
-import { ReactReduxContext } from 'react-redux';
+import { useState, useContext, useEffect } from 'react';
+import { ReactReduxContext, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function LukePage() {
 	// redux
 	const { store } = useContext(ReactReduxContext);
+	const buttonSelectors = useSelector((state) => state.cards);
 
 	// states
 	const [videoSrc, setVideoSrc] = useState(
@@ -28,12 +27,9 @@ function LukePage() {
 	);
 	const [chosenCard, setChosenCard] = useState();
 
-	// local reducer
-	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
-
 	// r cards click handler
 	const findR = () => {
-		dispatch({ type: 'R' });
+		store.dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/w4cQ70fAh2Q');
 		setYouTubeSearch(
 			'https://www.youtube.com/results?search_query=Tears+of+Themis+Luke+Pearce'
@@ -63,28 +59,28 @@ function LukePage() {
 			<img src={lukeLogo} alt="Luke Pearce" className="character-logo"></img>
 			<VideoContainer videoSrc={videoSrc} />
 			<div className="button-row">
-				<SSRButton onClick={() => dispatch({ type: 'SSR' })} />
-				<SRButton onClick={() => dispatch({ type: 'SR' })} />
-				<MRButton onClick={() => dispatch({ type: 'MR' })} />
+				<SSRButton onClick={() => store.dispatch({ type: 'SSR' })} />
+				<SRButton onClick={() => store.dispatch({ type: 'SR' })} />
+				<MRButton onClick={() => store.dispatch({ type: 'MR' })} />
 				<RButton onClick={findR} />
 			</div>
 			<AltLinkButton onClick={selectYTSearch} />
-			{state.R ? <LukeR /> : null}
-			{state.SR ? (
-				<LukeSr
-					setVideoSrc={setVideoSrc}
-					setYouTubeSearch={setYouTubeSearch}
-					setChosenCard={setChosenCard}
-				/>
-			) : null}
-			{state.MR ? (
+			{buttonSelectors.R ? <LukeR /> : null}
+			{buttonSelectors.MR ? (
 				<LukeMr
 					setVideoSrc={setVideoSrc}
 					setYouTubeSearch={setYouTubeSearch}
 					setChosenCard={setChosenCard}
 				/>
 			) : null}
-			{state.SSR ? (
+			{buttonSelectors.SR ? (
+				<LukeSr
+					setVideoSrc={setVideoSrc}
+					setYouTubeSearch={setYouTubeSearch}
+					setChosenCard={setChosenCard}
+				/>
+			) : null}
+			{buttonSelectors.SSR ? (
 				<LukeSsr
 					setVideoSrc={setVideoSrc}
 					setYouTubeSearch={setYouTubeSearch}

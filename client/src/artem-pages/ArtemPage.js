@@ -3,21 +3,20 @@ import ArtemR from './ArtemR';
 import ArtemSr from './ArtemSr';
 import ArtemMr from './ArtemMr';
 import ArtemSsr from './ArtemSsr';
-import initialCardsState from '../store/states/initialCardsState';
-import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';
 import MRButton from '../components/buttons/MRButton';
 import RButton from '../components/buttons/RButton';
 import VideoContainer from '../components/VideoContainer';
 import AltLinkButton from '../components/AltLinkButton';
-import { useState, useReducer, useContext, useEffect } from 'react';
-import { ReactReduxContext } from 'react-redux';
+import { useState, useContext, useEffect } from 'react';
+import { ReactReduxContext, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function ArtemPage() {
 	// redux
 	const { store } = useContext(ReactReduxContext);
+	const buttonSelectors = useSelector((state) => state.cards);
 
 	// states
 	const [videoSrc, setVideoSrc] = useState(
@@ -28,12 +27,9 @@ function ArtemPage() {
 	);
 	const [chosenCard, setChosenCard] = useState();
 
-	// local reducer
-	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
-
 	// r cards click handler
 	const findR = () => {
-		dispatch({ type: 'R' });
+		store.dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/YXy2wSvKI3A');
 		setYouTubeSearch(
 			'https://www.youtube.com/results?search_query=Tears+of+Themis+Artem+Wing'
@@ -63,28 +59,28 @@ function ArtemPage() {
 			<img src={artemLogo} alt="Artem Wing" className="character-logo"></img>
 			<VideoContainer videoSrc={videoSrc} />
 			<div className="button-row">
-				<SSRButton onClick={() => dispatch({ type: 'SSR' })} />
-				<SRButton onClick={() => dispatch({ type: 'SR' })} />
-				<MRButton onClick={() => dispatch({ type: 'MR' })} />
+				<SSRButton onClick={() => store.dispatch({ type: 'SSR' })} />
+				<SRButton onClick={() => store.dispatch({ type: 'SR' })} />
+				<MRButton onClick={() => store.dispatch({ type: 'MR' })} />
 				<RButton onClick={findR} />
 			</div>
 			<AltLinkButton onClick={selectYTSearch} />
-			{state.R ? <ArtemR /> : null}
-			{state.SR ? (
-				<ArtemSr
-					setVideoSrc={setVideoSrc}
-					setYouTubeSearch={setYouTubeSearch}
-					setChosenCard={setChosenCard}
-				/>
-			) : null}
-			{state.MR ? (
+			{buttonSelectors.R ? <ArtemR /> : null}
+			{buttonSelectors.MR ? (
 				<ArtemMr
 					setVideoSrc={setVideoSrc}
 					setYouTubeSearch={setYouTubeSearch}
 					setChosenCard={setChosenCard}
 				/>
 			) : null}
-			{state.SSR ? (
+			{buttonSelectors.SR ? (
+				<ArtemSr
+					setVideoSrc={setVideoSrc}
+					setYouTubeSearch={setYouTubeSearch}
+					setChosenCard={setChosenCard}
+				/>
+			) : null}
+			{buttonSelectors.SSR ? (
 				<ArtemSsr
 					setVideoSrc={setVideoSrc}
 					setYouTubeSearch={setYouTubeSearch}

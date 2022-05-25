@@ -2,7 +2,7 @@ import './stylesheets/navbar.scss';
 import { useSelector } from 'react-redux';
 
 function Navbar() {
-	const title = useSelector((state) => state.title);
+	const title = useSelector((state) => state.navbar.title);
 	return (
 		<div className="navbar">
 			<img

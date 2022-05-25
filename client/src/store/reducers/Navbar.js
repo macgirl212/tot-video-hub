@@ -4,7 +4,6 @@ function navbar(state = initialNavbarState, action) {
 	switch (action.type) {
 		case 'TITLE':
 			return {
-				...state,
 				title: action.payload,
 			};
 		default:

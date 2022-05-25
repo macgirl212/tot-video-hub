@@ -13,6 +13,7 @@ function HomePage() {
 
 	useEffect(() => {
 		store.dispatch({ type: 'TITLE', payload: 'Video Hub' });
+		store.dispatch({ type: 'RESET' });
 	});
 
 	return (

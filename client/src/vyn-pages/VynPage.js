@@ -3,21 +3,20 @@ import VynR from './VynR';
 import VynSr from './VynSr';
 import VynMr from './VynMr';
 import VynSsr from './VynSsr';
-import initialCardsState from '../store/states/initialCardsState';
-import cardReducer from '../store/reducers/CardReducer';
 import SSRButton from '../components/buttons/SSRButton';
 import SRButton from '../components/buttons/SRButton';
 import MRButton from '../components/buttons/MRButton';
 import RButton from '../components/buttons/RButton';
 import VideoContainer from '../components/VideoContainer';
 import AltLinkButton from '../components/AltLinkButton';
-import { useState, useReducer, useContext, useEffect } from 'react';
-import { ReactReduxContext } from 'react-redux';
+import { useState, useContext, useEffect } from 'react';
+import { ReactReduxContext, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function VynPage() {
 	// redux
 	const { store } = useContext(ReactReduxContext);
+	const buttonSelectors = useSelector((state) => state.cards);
 
 	// states
 	const [videoSrc, setVideoSrc] = useState(
@@ -28,12 +27,9 @@ function VynPage() {
 	);
 	const [chosenCard, setChosenCard] = useState();
 
-	// local reducer
-	const [state, dispatch] = useReducer(cardReducer, initialCardsState);
-
 	// r cards click handler
 	const findR = () => {
-		dispatch({ type: 'R' });
+		store.dispatch({ type: 'R' });
 		setVideoSrc('https://www.youtube.com/embed/qn4zDDSxP24');
 		setYouTubeSearch(
 			'https://www.youtube.com/results?search_query=Tears+of+Themis+Vyn+Richter'
@@ -63,28 +59,28 @@ function VynPage() {
 			<img src={vynLogo} alt="Vyn Richter" className="character-logo"></img>
 			<VideoContainer videoSrc={videoSrc} />
 			<div className="button-row">
-				<SSRButton onClick={() => dispatch({ type: 'SSR' })} />
-				<SRButton onClick={() => dispatch({ type: 'SR' })} />
-				<MRButton onClick={() => dispatch({ type: 'MR' })} />
+				<SSRButton onClick={() => store.dispatch({ type: 'SSR' })} />
+				<SRButton onClick={() => store.dispatch({ type: 'SR' })} />
+				<MRButton onClick={() => store.dispatch({ type: 'MR' })} />
 				<RButton onClick={findR} />
 			</div>
 			<AltLinkButton onClick={selectYTSearch} />
-			{state.R ? <VynR /> : null}
-			{state.SR ? (
-				<VynSr
-					setVideoSrc={setVideoSrc}
-					setYouTubeSearch={setYouTubeSearch}
-					setChosenCard={setChosenCard}
-				/>
-			) : null}
-			{state.MR ? (
+			{buttonSelectors.R ? <VynR /> : null}
+			{buttonSelectors.MR ? (
 				<VynMr
 					setVideoSrc={setVideoSrc}
 					setYouTubeSearch={setYouTubeSearch}
 					setChosenCard={setChosenCard}
 				/>
 			) : null}
-			{state.SSR ? (
+			{buttonSelectors.SR ? (
+				<VynSr
+					setVideoSrc={setVideoSrc}
+					setYouTubeSearch={setYouTubeSearch}
+					setChosenCard={setChosenCard}
+				/>
+			) : null}
+			{buttonSelectors.SSR ? (
 				<VynSsr
 					setVideoSrc={setVideoSrc}
 					setYouTubeSearch={setYouTubeSearch}

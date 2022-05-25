@@ -1,4 +1,6 @@
-function cardReducer(state, action) {
+import initialCardsState from '../states/initialCardsState';
+
+function cards(state = initialCardsState, action) {
 	// toggle selected card category to display
 	switch (action.type) {
 		case 'R':
@@ -29,9 +31,16 @@ function cardReducer(state, action) {
 				SR: false,
 				SSR: !state.SSR,
 			};
+		case 'RESET':
+			return {
+				R: false,
+				MR: false,
+				SR: false,
+				SSR: false,
+			};
 		default:
-			console.log('Ummm... what just happened? Error!');
+			return state;
 	}
 }
 
-export default cardReducer;
+export default cards;
