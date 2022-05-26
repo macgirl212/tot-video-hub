@@ -3,10 +3,7 @@ import MariusR from './MariusR';
 import MariusSr from './MariusSr';
 import MariusMr from './MariusMr';
 import MariusSsr from './MariusSsr';
-import SSRButton from '../components/buttons/SSRButton';
-import SRButton from '../components/buttons/SRButton';
-import MRButton from '../components/buttons/MRButton';
-import RButton from '../components/buttons/RButton';
+import ButtonRow from '../components/ButtonRow';
 import VideoContainer from '../components/VideoContainer';
 import AltLinkButton from '../components/AltLinkButton';
 import { useState, useContext, useEffect } from 'react';
@@ -62,12 +59,7 @@ function MariusPage() {
 				className="character-logo"
 			></img>
 			<VideoContainer videoSrc={videoSrc} />
-			<div className="button-row">
-				<SSRButton onClick={() => store.dispatch({ type: 'SSR' })} />
-				<SRButton onClick={() => store.dispatch({ type: 'SR' })} />
-				<MRButton onClick={() => store.dispatch({ type: 'MR' })} />
-				<RButton onClick={findR} />
-			</div>
+			<ButtonRow findR={findR} />
 			<AltLinkButton onClick={selectYTSearch} />
 			{buttonSelectors.R ? <MariusR /> : null}
 			{buttonSelectors.MR ? (

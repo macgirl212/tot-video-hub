@@ -3,10 +3,7 @@ import ArtemR from './ArtemR';
 import ArtemSr from './ArtemSr';
 import ArtemMr from './ArtemMr';
 import ArtemSsr from './ArtemSsr';
-import SSRButton from '../components/buttons/SSRButton';
-import SRButton from '../components/buttons/SRButton';
-import MRButton from '../components/buttons/MRButton';
-import RButton from '../components/buttons/RButton';
+import ButtonRow from '../components/ButtonRow';
 import VideoContainer from '../components/VideoContainer';
 import AltLinkButton from '../components/AltLinkButton';
 import { useState, useContext, useEffect } from 'react';
@@ -58,12 +55,7 @@ function ArtemPage() {
 			</Link>
 			<img src={artemLogo} alt="Artem Wing" className="character-logo"></img>
 			<VideoContainer videoSrc={videoSrc} />
-			<div className="button-row">
-				<SSRButton onClick={() => store.dispatch({ type: 'SSR' })} />
-				<SRButton onClick={() => store.dispatch({ type: 'SR' })} />
-				<MRButton onClick={() => store.dispatch({ type: 'MR' })} />
-				<RButton onClick={findR} />
-			</div>
+			<ButtonRow findR={findR} />
 			<AltLinkButton onClick={selectYTSearch} />
 			{buttonSelectors.R ? <ArtemR /> : null}
 			{buttonSelectors.MR ? (

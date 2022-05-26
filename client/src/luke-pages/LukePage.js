@@ -3,10 +3,7 @@ import LukeR from './LukeR';
 import LukeSr from './LukeSr';
 import LukeMr from './LukeMr';
 import LukeSsr from './LukeSsr';
-import SSRButton from '../components/buttons/SSRButton';
-import SRButton from '../components/buttons/SRButton';
-import MRButton from '../components/buttons/MRButton';
-import RButton from '../components/buttons/RButton';
+import ButtonRow from '../components/ButtonRow';
 import VideoContainer from '../components/VideoContainer';
 import AltLinkButton from '../components/AltLinkButton';
 import { useState, useContext, useEffect } from 'react';
@@ -58,12 +55,7 @@ function LukePage() {
 			</Link>
 			<img src={lukeLogo} alt="Luke Pearce" className="character-logo"></img>
 			<VideoContainer videoSrc={videoSrc} />
-			<div className="button-row">
-				<SSRButton onClick={() => store.dispatch({ type: 'SSR' })} />
-				<SRButton onClick={() => store.dispatch({ type: 'SR' })} />
-				<MRButton onClick={() => store.dispatch({ type: 'MR' })} />
-				<RButton onClick={findR} />
-			</div>
+			<ButtonRow findR={findR} />
 			<AltLinkButton onClick={selectYTSearch} />
 			{buttonSelectors.R ? <LukeR /> : null}
 			{buttonSelectors.MR ? (
