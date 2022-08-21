@@ -1,16 +1,24 @@
 # ToT Video Hub
 
-## What is this? And what is that first word?
+![Home Page](./screenshots/Home%20Screen.png)
+
+## What is this?
 
 This is a MERN stack app to find YouTube videos related to the game, Tears of Themis. ToT is an acronym for Tears of Themis.
 
 ## Not to get too off track, but what is Tears of Themis, and why did you make this?
 
-[Tears of Themis](https://tot.hoyoverse.com/en-us) is a detective/adventure/romance mobile game. I made this as my passion project. I like playing this game, but many of the game's storylines are only accessed through cards, which are acquired at random. Many of this game's generous players have recorded these limited stories and uploaded them onto YouTube. To make it easier to find them, I made this website.
+[Tears of Themis](https://tot.hoyoverse.com/en-us) is a romance/detective/adventure mobile game. I made this as my passion project. I like playing this game, but many of the game's storylines are only accessed through cards, which are acquired at random. Many of this game's generous players have recorded these limited stories and uploaded them onto YouTube. To make it easier to find them, I made this website.
 
 ## How does it work?
 
-The home page allows you to choose the main character in your search. You are then taken to their personal page where you can view their promotional video or browse all of the available cards on the EN servers. A single click on any card will load up a YouTube video linked to that card's story. You can also double click any card to bring up its fullscreen view of the video version of that card.
+The home page allows you to choose the main character in your search.
+
+![Home Page Navigation](./screenshots/Home%20Screen.gif)
+
+You are then taken to their personal page where you can view their promotional video or browse all of the available cards on the EN servers. A single click on any card will load up a YouTube video linked to that card's story. You can also double click any card to bring up its fullscreen view of the video version of that card.
+
+![Page Example](./screenshots/Page%20Example.gif)
 
 ## What external websites are you using with this?
 
