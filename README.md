@@ -34,7 +34,7 @@ This is my very first MERN stack app. The back-end uses Node and Express. MongoD
 
 ## Will you deploy this?
 
-One day, I might. Stay tuned for that. I need to add some more features before it's ready for that.
+Not likely. There's a lot of copyrighted artwork used from the original game, so I'd rather not risk any misuse of their property.
 
 ## What more are you planning on adding in the future?
 
